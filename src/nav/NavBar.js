@@ -31,10 +31,10 @@ const NavBar = () => {
       </div>
         <ul className='nav-list'>
           <li>
-            <Link to="/">Our Houses</Link>
+            <Link className="nav-link" to="/">Our Houses</Link>
           </li>
           <li>
-            <Link to="/house">House</Link>
+            <Link className="nav-link" to="/house">House</Link>
           </li>
         </ul>
     </nav>

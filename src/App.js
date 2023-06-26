@@ -5,12 +5,16 @@ import AppRouter from "./routes/Router";
 
 function App() {
   return (
-    <>
+    <div className="app-container">
       <BrowserRouter>
-        <NavBar />
-        <AppRouter />
+        <section className="nav-bar-container">
+          <NavBar />
+        </section>
+        <section className="main-content">
+          <AppRouter />
+        </section>
       </BrowserRouter>
-    </>
+    </div>
   );
 }
 
