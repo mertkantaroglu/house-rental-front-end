@@ -1,3 +1,62 @@
 nav {
+  background-color: pink;
+}
+
+.nav-icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  left: 0px;
+  top: 25px;
+  padding: 5px 10px;
+  box-sizing: border-box;
+}
+
+.nav-list {
+  visibility: hidden;
+  display: none;
+  list-style: none;
+}
+
+.nav-list li {
+  text-align: right;
+  list-style-type: none;
+  padding: 10px 5px 0 0;
+}
+
+.nav-list li > * {
+  text-decoration: none;
+  color: black;
+}
+
+.visible {
+  visibility: visible;
   background-color: red;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  nav {
+    background-color: red;
+    width: 20%;
+    height: 100vh;
+  }
+
+  .toggled-btns {
+    display: none;
+  }
+
+  .nav-list {
+    visibility: visible;
+    display: block;
+    margin: 10PX;
+  }
+
+  .nav-list li {
+    text-align: left;
+    list-style-type: none;
+    padding: 10px 5px 0 0;
+  }
 }
