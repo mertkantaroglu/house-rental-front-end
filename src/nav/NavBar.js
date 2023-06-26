@@ -20,7 +20,7 @@ const NavBar = () => {
   return (
     <nav className="nav-container">
       <div className="nav-icons">
-        <h1>Royalty Houses</h1>
+        <h1>Royalty Cribs</h1>
         <section className='toggled-btns'>
           {isListShown ? (
             <CloseBtn onClick={closeList} />
