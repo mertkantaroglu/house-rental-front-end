@@ -31,6 +31,7 @@
   align-items: center;
   display: flex;
   flex-direction: column;
+  /* background-color: red */
 }
 
 .house p {
@@ -152,37 +153,64 @@
   margin: 0 10px;
 } */
 
-.horizontal-screen-view {
-  position: relative;
-  height: 100vh;
-  overflow: hidden;
-  background-color: red;
-}
+  .horizontal-screen-view {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    /* overflow: hidden; */
+  }
 
-.container {
-  display: flex;
-  flex-wrap: nowrap;
-  height: 100%;
-  overflow-x: scroll;
-  scroll-behavior: smooth;
-  /* background-color: blue; */
-}
+  .houses-list {
+    background-color: red;
+  }
 
-.screen {
-  flex: 0 0 100%;
-  height: 100%;
-  padding: 20px;
-  background-color: #f9f9f9;
-}
+  .house-container {
+    display: flex;
+    flex-wrap: nowrap;
+    height: 100%;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    /* background-color: blue; */
+  }
 
-.scroll-buttons {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-}
+  .house {
+    flex: 0 0 280px;
+    height: 400px;
+    padding: 20px;
+    margin-right: 20px;
+  }
 
-.scroll-buttons button {
-  margin: 0 10px;
-}
+  .house-image-container {
+    width: 260px;
+    height: 300px;
+  }
+
+  .scroll-buttons {
+    position: absolute;
+    /* bottom: 20px;
+  left: 50%; */
+    margin-top: 18%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .scroll-buttons button {
+    background-color: rgb(219, 207, 207);
+    width: 70px;
+    height: 50px;
+    border: none;
+  }
+
+  .scroll-buttons button:hover {
+    background-color: rgba(204, 255, 0, 1);
+  }
+
+  .right-btn{
+    border-radius: 30px 0 0 30px;
+  }
+
+  .left-btn{
+    border-radius: 0 30px 30px 0;
+  }
 }

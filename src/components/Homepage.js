@@ -1,6 +1,7 @@
-import React, { useEffect,useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchHouses } from "../store/HousesSlice";
+import { GrCaretNext, GrCaretPrevious } from "react-icons/gr";
 import defaultHouse from "../assets/defaultHouse.jpg";
 import "./Home.css";
 import MediumIcon from "../assets/Medium";
@@ -80,11 +81,11 @@ const Homepage = () => {
         <small>Select a house to see more details</small>
       </div>
       <section className="houses-list">
-        {dummyHouses.map((house) => (
+        {/* {dummyHouses.map((house) => (
           <HouseCard house={house} />
-        ))}
+        ))} */}
+        <HorizontalScroll />
       </section>
-      <HorizontalScroll />
     </div>
   );
 };
@@ -93,21 +94,19 @@ export default Homepage;
 
 const HouseCard = ({ house }) => {
   return (
-    <>
-      <div key={house.id} className="screen">
-        <section className="house-image-container">
-          <img src={house.image} alt={house.name} className="house-image" />
-        </section>
-        <h4 className="house-name">{house.name}</h4>
-        <div className="divider" />
-        <p>{house.address}</p>
-        <section className="socials">
-          <MediumIcon />
-          <TwitterIcon />
-          <LinkedInIcon />
-        </section>
-      </div>
-    </>
+    <div key={house.id} className="house">
+      <section className="house-image-container">
+        <img src={house.image} alt={house.name} className="house-image" />
+      </section>
+      <h4 className="house-name">{house.name}</h4>
+      <div className="divider" />
+      <p>{house.address}</p>
+      <section className="socials">
+        <MediumIcon />
+        <TwitterIcon />
+        <LinkedInIcon />
+      </section>
+    </div>
   );
 };
 
@@ -120,20 +119,16 @@ const HorizontalScroll = () => {
 
   return (
     <div className="horizontal-screen-view">
-      <div className="container" ref={containerRef}>
-        {/* Place your screen components here */}
-        <div className="screen screen1">Screen 1</div>
-        <div className="screen screen2">Screen 2</div>
-        <div className="screen screen3">Screen 3</div>
+          <div className="scroll-buttons">
+        <button className="left-btn" onClick={() => handleScroll(-200)}> <GrCaretPrevious color="white" size={24} /> </button>
+        <button className="right-btn" onClick={() => handleScroll(200)}> <GrCaretNext color="white" size={24} /> </button>
+      </div>
+      <div className="house-container" ref={containerRef}>
         {dummyHouses.map((house) => (
           <HouseCard house={house} />
         ))}
-        {/* Add more screens as needed */}
       </div>
-      <div className="scroll-buttons">
-        <button onClick={() => handleScroll(-200)}>&lt; Prev</button>
-        <button onClick={() => handleScroll(200)}>Next &gt;</button>
-      </div>
+
     </div>
   );
 };
