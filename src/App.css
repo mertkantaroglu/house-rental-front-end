@@ -1,6 +1,7 @@
 @media (min-width: 768px) {
   .app-container {
     display: flex;
+    /* overflow: hidden; */
   }
 
   .navbar-container {
@@ -12,5 +13,7 @@
   .main-content {
     flex-grow: 1;
     padding: 20px;
+    /* background-color: red; */
+    height: 100vh;
   }
 }
