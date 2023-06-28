@@ -1,28 +1,38 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { FaBars, FaTimes } from 'react-icons/fa';
+import React, { useRef } from 'react';
 import './NavBar.css';
+import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
+  const navRef = useRef();
 
-  const links = [
-    { title: 'HOUSE', path: '/' },
-    { title: 'MY HOUSES', path: '/houses' },
-    { title: 'MY RESERVATION', path: '/reservations' },
-    { title: 'ADD A HOUSE', path: '/addHouse' },
-  ];
+  const showNavBar = () => {
+    navRef.current.classList.toggle('responsive_nav');
+  };
 
   return (
-    <header className="Navbar">
-      <nav>
-        {/* <img width="130" height="130" src=logo alt="logo" /> */}
-        <hr style={{ width: '100%' }} />
-        <ul>
-          {links.map((l) => <li key={l.title}><Link to={l.path}>{l.title}</Link></li>)}
-          <li key="logout"><button className="logout" type="button">LOGOUT</button></li>
+    <div className="header__navbar" ref={navRef}>
+      <button type="button" className="nav-btn nav-open-btn" onClick={showNavBar}>
+        <FaBars />
+      </button>
+      <nav className="navbar">
+        <button type="button" className="nav-btn nav-close-btn" onClick={showNavBar}>
+          <FaTimes />
+        </button>
+        {/* <img className="navbar__title" src=logo alt="our logo" /> */}
+        <ul className="navbar__links">
+          <li><NavLink to="houses" activeClassName="active">Houses</NavLink></li>
+          <li><NavLink to="reserve" activeClassName="active">Reserve</NavLink></li>
+          <li><NavLink to="my-reservations" activeClassName="active">My Reservations</NavLink></li>
+          <li><NavLink to="add" activeClassName="active">Add A House</NavLink></li>
+          <li><NavLink to="delete" activeClassName="active">Delete A House</NavLink></li>
         </ul>
+        <h3 className="navbar__footer">
+          HOUSE RENT APP
+          {new Date().getFullYear()}
+        </h3>
       </nav>
-      <h6>&#169; HOUSE APP. 2023</h6>
-    </header>
+    </div>
   );
 };
 
