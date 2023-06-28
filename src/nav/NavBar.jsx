@@ -2,6 +2,7 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 import React, { useRef } from 'react';
 import './NavBar.css';
 import { NavLink } from 'react-router-dom';
+import logo from '../images/logo.png';
 
 const Navbar = () => {
   const navRef = useRef();
@@ -19,7 +20,7 @@ const Navbar = () => {
         <button type="button" className="nav-btn nav-close-btn" onClick={showNavBar}>
           <FaTimes />
         </button>
-        {/* <img className="navbar__title" src=logo alt="our logo" /> */}
+        <img className="navbar__title" src= {logo} alt="our logo" />
         <ul className="navbar__links">
           <li><NavLink to="houses" activeClassName="active">Houses</NavLink></li>
           <li><NavLink to="reserve" activeClassName="active">Reserve</NavLink></li>
