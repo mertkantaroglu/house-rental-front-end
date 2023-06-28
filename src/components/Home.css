@@ -64,8 +64,22 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 40%;
+  width: 45%;
   margin-top: 15px;
+}
+
+.social-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 20px;
+  border: 1px solid rgb(168, 165, 165);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-icon > * {
+  color: rgb(168, 165, 165);
 }
 
 @media (min-width: 768px) {
@@ -161,7 +175,18 @@
   }
 
   .houses-list {
-    background-color: red;
+    /* background-color: red; */
+    width: 90%;
+  }
+
+  .houses-container {
+    /* background-color: pink; */
+    /* width: 100%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
   }
 
   .house-container {
@@ -189,15 +214,17 @@
     position: absolute;
     /* bottom: 20px;
   left: 50%; */
-    margin-top: 18%;
-    width: 100%;
+  /* background-color: orange; */
+    margin-top: -10%;
+    width: 89%;
     display: flex;
+    z-index: 1;
     justify-content: space-between;
   }
 
   .scroll-buttons button {
     background-color: rgb(219, 207, 207);
-    width: 70px;
+    width: 60px;
     height: 50px;
     border: none;
   }

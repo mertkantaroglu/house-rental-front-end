@@ -2,11 +2,9 @@ import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchHouses } from "../store/HousesSlice";
 import { GrCaretNext, GrCaretPrevious } from "react-icons/gr";
+import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 import defaultHouse from "../assets/defaultHouse.jpg";
 import "./Home.css";
-import MediumIcon from "../assets/Medium";
-import TwitterIcon from "../assets/Twitter";
-import LinkedInIcon from "../assets/LinkedIn";
 
 const dummyHouses = [
   {
@@ -68,6 +66,11 @@ const dummyHouses = [
 const Homepage = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.houses);
+  const containerRef = useRef(null);
+
+  const handleScroll = (scrollOffset) => {
+    containerRef.current.scrollLeft += scrollOffset;
+  };
   console.log(data);
 
   useEffect(() => {
@@ -80,11 +83,27 @@ const Homepage = () => {
         <h3>Our Houses</h3>
         <small>Select a house to see more details</small>
       </div>
+      <div className="scroll-buttons">
+            <button className="left-btn" onClick={() => handleScroll(-200)}>
+              {" "}
+              <GrCaretPrevious color="white" size={20} />{" "}
+            </button>
+            <button className="right-btn" onClick={() => handleScroll(200)}>
+              {" "}
+              <GrCaretNext color="white" size={20} />{" "}
+            </button>
+          </div>
       <section className="houses-list">
         {/* {dummyHouses.map((house) => (
           <HouseCard house={house} />
         ))} */}
-        <HorizontalScroll />
+        <div className="horizontal-screen-view">
+          <div className="house-container" ref={containerRef}>
+            {dummyHouses.map((house) => (
+              <HouseCard house={house} />
+            ))}
+          </div>
+        </div>{" "}
       </section>
     </div>
   );
@@ -102,33 +121,44 @@ const HouseCard = ({ house }) => {
       <div className="divider" />
       <p>{house.address}</p>
       <section className="socials">
-        <MediumIcon />
-        <TwitterIcon />
-        <LinkedInIcon />
+        <div className="social-icon">
+          <FaTwitter />
+        </div>
+        <div className="social-icon">
+          <FaFacebookF />
+        </div>
+        <div className="social-icon">
+          <FaInstagram />
+        </div>
       </section>
     </div>
   );
 };
 
-const HorizontalScroll = () => {
-  const containerRef = useRef(null);
+// const HorizontalScroll = () => {
+//   const containerRef = useRef(null);
 
-  const handleScroll = (scrollOffset) => {
-    containerRef.current.scrollLeft += scrollOffset;
-  };
+//   const handleScroll = (scrollOffset) => {
+//     containerRef.current.scrollLeft += scrollOffset;
+//   };
 
-  return (
-    <div className="horizontal-screen-view">
-          <div className="scroll-buttons">
-        <button className="left-btn" onClick={() => handleScroll(-200)}> <GrCaretPrevious color="white" size={24} /> </button>
-        <button className="right-btn" onClick={() => handleScroll(200)}> <GrCaretNext color="white" size={24} /> </button>
-      </div>
-      <div className="house-container" ref={containerRef}>
-        {dummyHouses.map((house) => (
-          <HouseCard house={house} />
-        ))}
-      </div>
-
-    </div>
-  );
-};
+//   return (
+//     <div className="horizontal-screen-view">
+//       <div className="scroll-buttons">
+//         <button className="left-btn" onClick={() => handleScroll(-200)}>
+//           {" "}
+//           <GrCaretPrevious color="white" size={24} />{" "}
+//         </button>
+//         <button className="right-btn" onClick={() => handleScroll(200)}>
+//           {" "}
+//           <GrCaretNext color="white" size={24} />{" "}
+//         </button>
+//       </div>
+//       <div className="house-container" ref={containerRef}>
+//         {dummyHouses.map((house) => (
+//           <HouseCard house={house} />
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };
