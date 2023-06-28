@@ -1,7 +1,7 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
-import Homepage from "../components/Homepage";
-import HousePage from "../components/House";
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Homepage from '../components/Homepage';
+import HousePage from '../components/House';
 
 const AppRouter = () => (
   <Routes>

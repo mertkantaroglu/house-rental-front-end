@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import houseReducer from './HouseSlice';
-import housesReducer from './HousesSlice'
+import housesReducer from './HousesSlice';
 
 export default configureStore({
   reducer: {
