@@ -4,7 +4,7 @@ import { fetchHouse } from '../store/HouseSlice'
 
 const HousePage = () => {
   const dispatch = useDispatch()
-  const house = useSelector((state) => state.house)
+  const house = useSelector((state) => state.house.house);
   console.log(house)
 
   useEffect(() => {
@@ -13,12 +13,15 @@ const HousePage = () => {
 
   return (
     <div>
-      <h1>House</h1>
-      <p>Name</p>
-      <p>Address</p>
-      <p>Price</p>
+      <h1>House Details</h1>
+      <img src={house.image} alt={house.name}/>
+      <p>Name: {house.name}</p>
+      <p>Location: {house.location}</p>
+      <p>Bedrooms: {house.bedrooms}</p>
+      <p>Bathrooms: {house.bathrooms}</p>
+      <p>Price: {house.price}</p>
     </div>
   )
 }
 
-export default HousePage
+export default HousePage;
