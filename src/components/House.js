@@ -5,7 +5,6 @@ import { fetchHouse } from '../store/HouseSlice';
 const HousePage = () => {
   const dispatch = useDispatch();
   const house = useSelector((state) => state.house);
-  console.log(house);
 
   useEffect(() => {
     dispatch(fetchHouse());
