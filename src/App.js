@@ -3,6 +3,7 @@ import "./App.css";
 import NavBar from "./nav/NavBar";
 import AppRouter from "./routes/Router";
 
+
 function App() {
   return (
     <div className="app-container">
