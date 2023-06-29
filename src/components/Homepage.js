@@ -19,8 +19,6 @@ const Homepage = () => {
     containerRef.current.scrollLeft += scrollOffset;
   };
 
-  console.log(data);
-
   useEffect(() => {
     dispatch(fetchHouses());
   }, [dispatch]);
