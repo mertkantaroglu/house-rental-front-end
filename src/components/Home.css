@@ -1,0 +1,164 @@
+.heading {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.heading h3 {
+  margin: 0;
+  padding: 0;
+  font-size: 34px;
+  font-weight: bold;
+}
+
+.heading small {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  color: grey;
+}
+
+.houses-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.house {
+  width: 250px;
+  height: 80vh;
+  margin-top: 20px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.house p {
+  color: grey;
+}
+
+.house-image-container {
+  width: 100%;
+  height: 70%;
+  background-color: rgb(181, 176, 176);
+  cursor: pointer;
+}
+
+.house-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+}
+
+.house-name {
+  margin: 10px;
+  cursor: pointer;
+}
+
+.divider {
+  border-bottom: 1px dotted black;
+  height: 2px;
+  width: 50px;
+  margin-bottom: 10px;
+}
+
+.socials {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 45%;
+  margin-top: 15px;
+}
+
+.social-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 20px;
+  border: 1px solid rgb(168, 165, 165);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-icon > * {
+  color: rgb(168, 165, 165);
+}
+
+.scroll-buttons {
+  visibility: hidden;
+}
+
+@media (min-width: 768px) {
+  .heading {
+    margin: 40px 0 20px 0;
+  }
+
+  .horizontal-screen-view {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+  }
+
+  .houses-list {
+    width: 90%;
+  }
+
+  .houses-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .house-container {
+    display: flex;
+    flex-wrap: nowrap;
+    height: 100%;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+  }
+
+  .house {
+    flex: 0 0 280px;
+    height: 400px;
+    padding: 20px;
+    margin-right: 20px;
+  }
+
+  .house-image-container {
+    width: 260px;
+    height: 300px;
+  }
+
+  .scroll-buttons {
+    position: absolute;
+    margin-top: -10%;
+    /* width: 84.2%; */
+    left: 15.65%;
+    right: 0;
+    display: flex;
+    z-index: 1;
+    justify-content: space-between;
+    visibility: visible;
+  }
+
+  .scroll-buttons button {
+    background-color: rgb(219, 207, 207);
+    width: 60px;
+    height: 50px;
+    border: none;
+  }
+
+  .scroll-buttons button:hover {
+    background-color: rgba(204, 255, 0, 1);
+  }
+
+  .right-btn {
+    border-radius: 30px 0 0 30px;
+  }
+
+  .left-btn {
+    border-radius: 0 30px 30px 0;
+  }
+}
