@@ -13,7 +13,11 @@ const HousePage = () => {
 
   return (
     <div>
-      <h1>House</h1>
+      <h1>
+        House:
+        {' '}
+        {house.name}
+      </h1>
       <p>Name</p>
       <p>Address</p>
       <p>Price</p>
