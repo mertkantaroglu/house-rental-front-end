@@ -42,6 +42,7 @@
   height: 70%;
   background-color: rgb(181, 176, 176);
   cursor: pointer;
+  border-radius: 20px;
 }
 
 .house-image {
@@ -136,7 +137,7 @@
     margin-top: -10%;
 
     /* width: 84.2%; */
-    left: 15.65%;
+    left: 13.3rem;
     right: 0;
     display: flex;
     z-index: 1;
