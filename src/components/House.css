@@ -23,9 +23,9 @@
   background-color: #98bf11;
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .info-container {
     width: 80%;
     margin: 5% auto;
   }
-}
+} */

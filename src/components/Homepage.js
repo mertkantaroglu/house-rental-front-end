@@ -24,42 +24,43 @@ const Homepage = () => {
   }, [dispatch]);
 
   return (
-    <div className="houses-container">
-      <div className="heading">
-        <h3>Our Houses</h3>
-        <small>Select a house to see more details</small>
-      </div>
-      <div className="scroll-buttons">
-        <button
-          type="button"
-          className="left-btn"
-          onClick={() => handleScroll(-200)}
-        >
-          {' '}
-          <GrCaretPrevious color="white" size={20} />
-          {' '}
-        </button>
-        <button
-          type="button"
-          className="right-btn"
-          onClick={() => handleScroll(200)}
-        >
-          {' '}
-          <GrCaretNext color="white" size={20} />
-          {' '}
-        </button>
-      </div>
-      <section className="houses-list">
-        <div className="horizontal-screen-view">
-          <div className="house-container" ref={containerRef}>
-            {data.houses.map((house) => (
-              <HouseCard house={house} key={house.id} />
-            ))}
+    <>
+      {data.loading ? (
+        <p>Loading...</p>
+      ) : (
+        <div className="houses-container">
+          <div className="heading">
+            <h3>Our Houses</h3>
+            <small>Select a house to see more details</small>
           </div>
+          <div className="scroll-buttons">
+            <button
+              type="button"
+              className="left-btn"
+              onClick={() => handleScroll(-200)}
+            >
+              <GrCaretPrevious color="white" size={20} />
+            </button>
+            <button
+              type="button"
+              className="right-btn"
+              onClick={() => handleScroll(200)}
+            >
+              <GrCaretNext color="white" size={20} />
+            </button>
+          </div>
+          <section className="houses-list">
+            <div className="horizontal-screen-view">
+              <div className="house-container" ref={containerRef}>
+                {data.houses.map((house) => (
+                  <HouseCard house={house} key={house.id} />
+                ))}
+              </div>
+            </div>
+          </section>
         </div>
-        {' '}
-      </section>
-    </div>
+      )}
+    </>
   );
 };
 
