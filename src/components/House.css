@@ -1,8 +1,8 @@
 .house-container {
   display: flex;
   flex-direction: column;
-  background-color: #98bf11;
   align-items: center;
+  margin-top: 20px;
 }
 
 .img-container {
@@ -17,12 +17,46 @@
 } */
 
 .info-container {
-  background-color: aqua;
   width: 60%;
+}
+
+.info-container h3 {
+  text-align: center;
+  margin: 15px;
+}
+
+table {
+  width: 100%;
+}
+
+tr {
+  background-color: rgb(195, 195, 236);
+}
+
+.white-row {
+  background-color: #fff;
+}
+
+td > div {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  font-weight: 500;
+}
+
+.reserve-btn-cont {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .reserve-btn {
   background-color: #98bf11;
+  width: 180px;
+  padding: 8px;
+  text-align: center;
+  border-radius: 10px;
+  color: white;
 }
 
 /* @media (max-width: 768px) {

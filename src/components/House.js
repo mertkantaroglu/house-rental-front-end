@@ -16,63 +16,61 @@ const HousePage = () => {
   }, [dispatch, id]);
 
   return (
-    <section className="container">
-      <div className="house-container">
-        <div className="img-container">
-          <img src={house.image} alt={house.name} />
-        </div>
-        <div className="info-container">
-          <h1>{house.name}</h1>
-          <table className="table">
-            <tbody>
-              <tr>
-                <td>
-                  <div>
-                    <span className="fw-bold">Location:</span>
-                    <span>{house.location}</span>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div>
-                    <span className="fw-bold">Bedrooms:</span>
-                    <span>{house.bedrooms}</span>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div>
-                    <span className="fw-bold">Bathrooms:</span>
-                    <span>{house.bathrooms}</span>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div>
-                    <span className="fw-bold">Price:</span>
-                    <span>
-                      $
-                      {house.price}
-                    </span>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <div>
-            <Link
-              to={`/reservations/new/${house.id}`}
-            >
-              <button type="button" className="reserve-btn" style={{ backgroundColor: '#CCFF00' }}>RESERVE HOUSE</button>
-            </Link>
-          </div>
+    <div className="house-container">
+      <div className="img-container">
+        <img src={house.image} alt={house.name} />
+      </div>
+      <div className="info-container">
+        <h3>{house.name}</h3>
+        <table className="table">
+          <tbody>
+            <tr>
+              <td>
+                <div>
+                  <span className="fw-bold">Location:</span>
+                  <span>{house.location}</span>
+                </div>
+              </td>
+            </tr>
+            <tr className="white-row">
+              <td>
+                <div>
+                  <span className="fw-bold">Bedrooms:</span>
+                  <span>{house.bedrooms}</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div>
+                  <span className="fw-bold">Bathrooms:</span>
+                  <span>{house.bathrooms}</span>
+                </div>
+              </td>
+            </tr>
+            <tr className="white-row">
+              <td>
+                <div>
+                  <span className="fw-bold">Price:</span>
+                  <span>
+                    $
+                    {house.price}
+                  </span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div className="reserve-btn-cont">
+          <Link
+            to={`/reservations/new/${house.id}`}
+            className="reserve-btn"
+          >
+            RESERVE HOUSE
+          </Link>
         </div>
       </div>
-    </section>
-
+    </div>
   );
 };
 
