@@ -1,3 +1,8 @@
+.page-title {
+  text-align: center;
+  font-size: 24px;
+}
+
 .house-container {
   display: flex;
   flex-direction: column;
@@ -10,11 +15,6 @@
   height: 250px;
   background-color: palevioletred;
 }
-
-/* img {
-  width: 50%;
-  height: 50%;
-} */
 
 .info-container {
   width: 60%;
@@ -59,13 +59,20 @@ td > div {
   color: white;
 }
 
-/* @media (max-width: 768px) {
-  .info-container {
-    width: 80%;
-    margin: 5% auto;
-  }
-} */
 
 @media (min-width: 768px) {
+  .house-container {
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 0 30px;
+  }
 
+  .img-container {
+    width: 50%;
+    height: 300px;
+}
+
+.info-container {
+  width: 30%;
+}
 }
