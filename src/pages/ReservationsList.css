@@ -4,13 +4,28 @@
   align-items: center;
 }
 
-.reservations-list {
-  background-color: yellow;
+.reservations-cont h3  {
+  margin-bottom: 20px;
+}
+
+.reservations-list-header {
+  background-color: rgb(157, 157, 239);
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.reservations-list {
+  width: 95%;
   display: flex;
   flex-direction: column;
   align-items: center;
   font-size: 0.9rem;
+  border: 1px solid rgb(157, 157, 239);
 }
 
 .reservations-item {
@@ -22,6 +37,12 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 10px;
+  border-bottom: 1px solid rgb(157, 157, 239);
+}
+
+.reservations-item:hover{
+  background-color: var(--bg-green);
+  color: #fff;
 }
 
 .reservation-name:hover {

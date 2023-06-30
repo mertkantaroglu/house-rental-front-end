@@ -32,30 +32,33 @@ const reservations = [
 const ReservationsList = () => {
   const navigate = useNavigate();
 
-  const deleteReservation = (id) => {
-    console.log(id);
+  const deleteReservation = (reservation) => {
+    console.log(reservation.id);
   };
 
   return (
     <div className="reservations-cont">
-      <h1>Reservations</h1>
+      <h3>Reservations</h3>
       <ul className="reservations-list">
+        <li className="reservations-list-header">
+          <span className="name">Name</span>
+          {' '}
+          <span className="address">Address</span>
+          {' '}
+          <span className="start-date">Start Date</span>
+          {' '}
+          <span className="end-date">End Date</span>
+          {' '}
+          <span className="delete">Delete</span>
+        </li>
+
         {reservations.map((reservation) => (
           <li key={reservation.id} className="reservations-item">
             <span onClick={() => navigate(`/house/${reservation.id}`)} className="reservation-name">{reservation.name}</span>
-            {' '}
-            <span>
-              {reservation.address}
-              {' '}
-              {reservation.startDate}
-              {' '}
-            </span>
+            <span>{reservation.address}</span>
+            <span className="reservation-start-date">{reservation.startDate}</span>
             <span className="reservation-end-date">{reservation.endDate}</span>
-            {' '}
-            <span type="button">
-              <FaTrashAlt className="delete-btn" />
-              {' '}
-            </span>
+            <span type="button"><FaTrashAlt onClick={() => deleteReservation(reservation)} className="delete-btn" /></span>
           </li>
         ))}
       </ul>
