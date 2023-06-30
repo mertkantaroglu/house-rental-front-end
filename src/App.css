@@ -41,20 +41,19 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
-.rdp {
-  @apply bg-gray-50 shadow-lg border border-slate-200 rounded-md p-2;
+#root {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
 }
 
-.rdp-caption {
-  @apply text-slate-500;
+.container {
+  width: 100%;
+  max-width: 100vw;
 }
 
-.rdp-day {
-  border-radius: 10px !important;
-
-  @apply hover:bg-slate-300 cursor-pointer;
-}
-
-.rdp-day_selected {
-  background-color: #62b857 !important;
+@media (max-width: 680px) {
+  #root {
+    flex-direction: column;
+  }
 }
