@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const baseUrl = 'http://127.0.0.1:3000/api/v1/houses';
 
@@ -19,12 +19,14 @@ const houseSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchHouse.pending, (state) => {
-        state.loading = true;
+        const newState = state;
+        newState.loading = true;
       })
       .addCase(fetchHouse.fulfilled, (state, action) => {
-        state.loading = false;
-        state.house = action.payload;
-    })
+        const newState = state;
+        newState.loading = false;
+        newState.house = action.payload;
+      });
   },
 });
 
