@@ -1,0 +1,38 @@
+.reservations-cont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.reservations-list {
+  background-color: yellow;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.reservations-item {
+  background-color: #fff;
+  width: 95%;
+  height: 40px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.reservation-name:hover {
+  color: blue;
+  cursor: pointer;
+}
+
+.delete-btn .reservations-name {
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  color: red;
+}
