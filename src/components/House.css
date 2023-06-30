@@ -16,10 +16,11 @@
 
 .info-container {
   flex: 15%;
+  margin-right: 5%;
 }
 
 .reserve-btn {
-  background-color: rgba(204, 255, 0, 1);
+  background-color: #98bf11;
 }
 
 @media (max-width: 768px) {
