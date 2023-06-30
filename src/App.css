@@ -51,6 +51,7 @@ body {
 
 .rdp-day {
   border-radius: 10px !important;
+
   @apply hover:bg-slate-300 cursor-pointer;
 }
 
