@@ -1,14 +1,16 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-export const fetchHouse = createAsyncThunk('house/fetchHouse', async () => {
-  const response = await fetch('http://127.0.0.1:3000/api/v1/houses/2');
+const baseUrl = 'http://127.0.0.1:3000/api/v1/houses';
+
+export const fetchHouse = createAsyncThunk('house/fetchHouse', async (id) => {
+  const url = `${baseUrl}/${id}`;
+  const response = await fetch(url);
   const data = await response.json();
   return data;
 });
 
-// Create a slice of state
 const houseSlice = createSlice({
-  name: 'house',
+  name: 'houses',
   initialState: {
     loading: false,
     house: {},

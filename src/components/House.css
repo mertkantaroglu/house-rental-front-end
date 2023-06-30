@@ -1,0 +1,31 @@
+.container {
+  flex: 100%;
+  width: 100%;
+  margin: 5% 5%;
+}
+
+.img-container {
+  flex: 60%;
+  width: 100%;
+}
+
+/* img {
+  width: 50%;
+  height: 50%;
+} */
+
+.info-container {
+  flex: 15%;
+  margin-right: 5%;
+}
+
+.reserve-btn {
+  background-color: #98bf11;
+}
+
+@media (max-width: 768px) {
+  .info-container {
+    width: 80%;
+    margin: 5% auto;
+  }
+}
