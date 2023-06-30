@@ -32,8 +32,8 @@ const reservations = [
 const ReservationsList = () => {
   const navigate = useNavigate();
 
-  const deleteReservation = (reservation) => {
-    console.log(reservation.id);
+  const deleteReservation = () => {
+    // implement delete reservation
   };
 
   return (
