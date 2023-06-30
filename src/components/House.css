@@ -1,12 +1,14 @@
-.container {
-  flex: 100%;
-  width: 100%;
-  margin: 5% 5%;
+.house-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #98bf11;
+  align-items: center;
 }
 
 .img-container {
-  flex: 60%;
-  width: 100%;
+  width: 60%;
+  height: 250px;
+  background-color: palevioletred;
 }
 
 /* img {
@@ -15,8 +17,8 @@
 } */
 
 .info-container {
-  flex: 15%;
-  margin-right: 5%;
+  background-color: aqua;
+  width: 60%;
 }
 
 .reserve-btn {
@@ -29,3 +31,7 @@
     margin: 5% auto;
   }
 } */
+
+@media (min-width: 768px) {
+
+}

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { fetchHouse } from '../store/HouseSlice';
 import './House.css';
-import 'bootstrap/dist/css/bootstrap.css';
+// import 'bootstrap/dist/css/bootstrap.css';
 
 const HousePage = () => {
   const dispatch = useDispatch();
@@ -17,17 +17,17 @@ const HousePage = () => {
 
   return (
     <section className="container">
-      <div className="house-container d-flex flex-md-row flex-column">
-        <div className="img-container d-flex justify-content-center align-items-center m-auto">
-          <img src={house.image} alt={house.name} className="img-fluid rounded mx-auto d-block" />
+      <div className="house-container">
+        <div className="img-container">
+          <img src={house.image} alt={house.name} />
         </div>
         <div className="info-container">
-          <h1 className="d-flex justify-content-end pe-1">{house.name}</h1>
-          <table className="table table-striped">
+          <h1>{house.name}</h1>
+          <table className="table">
             <tbody>
               <tr>
                 <td>
-                  <div className="d-flex justify-content-between">
+                  <div>
                     <span className="fw-bold">Location:</span>
                     <span>{house.location}</span>
                   </div>
@@ -35,7 +35,7 @@ const HousePage = () => {
               </tr>
               <tr>
                 <td>
-                  <div className="d-flex justify-content-between">
+                  <div>
                     <span className="fw-bold">Bedrooms:</span>
                     <span>{house.bedrooms}</span>
                   </div>
@@ -43,7 +43,7 @@ const HousePage = () => {
               </tr>
               <tr>
                 <td>
-                  <div className="d-flex justify-content-between">
+                  <div>
                     <span className="fw-bold">Bathrooms:</span>
                     <span>{house.bathrooms}</span>
                   </div>
@@ -51,7 +51,7 @@ const HousePage = () => {
               </tr>
               <tr>
                 <td>
-                  <div className="d-flex justify-content-between">
+                  <div>
                     <span className="fw-bold">Price:</span>
                     <span>
                       $
@@ -65,9 +65,8 @@ const HousePage = () => {
           <div>
             <Link
               to={`/reservations/new/${house.id}`}
-              className="res-link text-decoration-none d-flex justify-content-end"
             >
-              <button type="button" className="reserve-btn btn text-white fw-bold" style={{ backgroundColor: '#CCFF00' }}>RESERVE HOUSE</button>
+              <button type="button" className="reserve-btn" style={{ backgroundColor: '#CCFF00' }}>RESERVE HOUSE</button>
             </Link>
           </div>
         </div>
