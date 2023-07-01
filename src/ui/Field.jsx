@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import cn from '../util/classnames';
+import cn from '../utils/classnames';
 
 const Field = ({
   type,

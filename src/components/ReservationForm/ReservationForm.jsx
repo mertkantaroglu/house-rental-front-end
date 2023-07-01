@@ -5,9 +5,9 @@ import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
 import { enqueueSnackbar } from 'notistack';
 import Field from '../../ui/Field';
-import cn from '../../util/classnames';
+import cn from '../../utils/classnames';
 import useOnClickOutside from '../../hooks/useOutSideClick';
-import addMonths from '../../util/util';
+import addMonths from '../../utils/utils';
 
 const ReservationForm = () => {
   const [form, setForm] = useState({
@@ -63,7 +63,7 @@ const ReservationForm = () => {
         anchorOrigin: { vertical: 'top', horizontal: 'right' },
       });
       // Uncomment this line after adding redux action to prevent form submission
-      return;
+      // return;
     }
 
     // Put the redux action to send the form here
@@ -155,7 +155,7 @@ const ReservationForm = () => {
         className="md:w-[20%] px-2 w-full"
         readOnly
         type="text"
-        placeholder="01/06/2022"
+        placeholder="01/07/2022"
         label="Return date"
         id="ending-date"
         name="endingDate"

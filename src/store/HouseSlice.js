@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 export const fetchHouse = createAsyncThunk('house/fetchHouse', async () => {
-  const response = await fetch('http://127.0.0.1:3000/api/v1/houses/2');
+  const response = await fetch('http://127.0.0.1:3000/api/v1/houses/id');
   const data = await response.json();
   return data;
 });

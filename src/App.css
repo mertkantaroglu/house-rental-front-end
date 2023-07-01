@@ -47,11 +47,6 @@ body {
   min-height: 100vh;
 }
 
-.container {
-  width: 100%;
-  max-width: 100vw;
-}
-
 @media (max-width: 680px) {
   #root {
     flex-direction: column;
