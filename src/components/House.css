@@ -12,9 +12,15 @@
 }
 
 .img-container {
-  width: 60%;
-  height: 250px;
-  background-color: palevioletred;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+}
+
+.img-container img {
+  width: auto;
+  height: 100%;
 }
 
 .info-container {
@@ -31,7 +37,7 @@ table {
 }
 
 tr {
-  background-color: rgb(195, 195, 236);
+  background-color: rgb(222, 222, 222);
 }
 
 .white-row {
@@ -60,6 +66,7 @@ td > div {
   color: white;
 }
 
+
 @media (min-width: 768px) {
   .house-cont {
     flex-direction: row;
@@ -70,9 +77,9 @@ td > div {
   .img-container {
     width: 50%;
     height: 300px;
-  }
+}
 
-  .info-container {
-    width: 30%;
-  }
+.info-container {
+  width: 30%;
+}
 }

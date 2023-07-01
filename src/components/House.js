@@ -3,22 +3,18 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { fetchHouse } from '../store/HouseSlice';
 import './House.css';
-// import 'bootstrap/dist/css/bootstrap.css';
 
 const HousePage = () => {
   const dispatch = useDispatch();
   const house = useSelector((state) => state.house.house);
-
   const { id } = useParams();
-
+  
   useEffect(() => {
     dispatch(fetchHouse(id));
   }, [dispatch, id]);
-
   return (
     <>
       <h3 className="page-title">House Details</h3>
-
       <div className="house-cont">
         <div className="img-container">
           <img src={house.image} alt={house.name} />
