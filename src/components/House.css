@@ -1,9 +1,10 @@
 .page-title {
   text-align: center;
   font-size: 24px;
+  margin-top: 30px;
 }
 
-.house-container {
+.house-cont {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -61,10 +62,10 @@ td > div {
 
 
 @media (min-width: 768px) {
-  .house-container {
+  .house-cont {
     flex-direction: row;
     justify-content: space-evenly;
-    padding: 0 30px;
+    padding: 30px;
   }
 
   .img-container {

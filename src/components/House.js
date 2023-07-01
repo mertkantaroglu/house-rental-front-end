@@ -19,7 +19,7 @@ const HousePage = () => {
     <>
       <h3 className="page-title">House Details</h3>
 
-      <div className="house-container">
+      <div className="house-cont">
         <div className="img-container">
           <img src={house.image} alt={house.name} />
         </div>
