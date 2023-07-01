@@ -60,7 +60,6 @@ td > div {
   color: white;
 }
 
-
 @media (min-width: 768px) {
   .house-cont {
     flex-direction: row;
@@ -71,9 +70,9 @@ td > div {
   .img-container {
     width: 50%;
     height: 300px;
-}
+  }
 
-.info-container {
-  width: 30%;
-}
+  .info-container {
+    width: 30%;
+  }
 }
