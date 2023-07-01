@@ -8,7 +8,7 @@ const HousePage = () => {
   const dispatch = useDispatch();
   const house = useSelector((state) => state.house.house);
   const { id } = useParams();
-  
+
   useEffect(() => {
     dispatch(fetchHouse(id));
   }, [dispatch, id]);

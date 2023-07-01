@@ -16,6 +16,7 @@
   justify-content: center;
   width: 100%;
   height: auto;
+  background-color: rgb(164, 164, 222);
 }
 
 .img-container img {
@@ -66,7 +67,6 @@ td > div {
   color: white;
 }
 
-
 @media (min-width: 768px) {
   .house-cont {
     flex-direction: row;
@@ -77,9 +77,9 @@ td > div {
   .img-container {
     width: 50%;
     height: 300px;
-}
+  }
 
-.info-container {
-  width: 30%;
-}
+  .info-container {
+    width: 30%;
+  }
 }
