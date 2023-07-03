@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { MdLocationPin } from 'react-icons/md';
 import { BsFillCalendarDateFill } from 'react-icons/bs';
 import { DayPicker } from 'react-day-picker';
@@ -8,14 +9,25 @@ import Field from '../../ui/Field';
 import cn from '../../utils/classnames';
 import useOnClickOutside from '../../hooks/useOutSideClick';
 import addMonths from '../../utils/utils';
+import { addReservation } from '../../store/ReservationsSlice';
+import { getHouses } from '../../store/HouseSlice';
 
 const ReservationForm = () => {
   const [form, setForm] = useState({
-    house: '',
+    house_id: '',
     city: '',
-    startingDate: null,
-    endingDate: null,
+    starting_date: null,
+    ending_date: null,
   });
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getHouses());
+  }, [dispatch]);
+
+  const { list } = useSelector((state) => state.house);
+
 
   const today = new Date();
 
@@ -38,7 +50,7 @@ const ReservationForm = () => {
       return;
     }
 
-    if (!form.startingDate) {
+    if (!form.starting_date) {
       enqueueSnackbar('Please select a pick up date', {
         variant: 'errorMessage',
         TransitionProps: { direction: 'down' },
@@ -47,7 +59,7 @@ const ReservationForm = () => {
       return;
     }
 
-    if (!form.endingDate) {
+    if (!form.ending_date) {
       enqueueSnackbar('Please select a return date', {
         variant: 'errorMessage',
         TransitionProps: { direction: 'down' },
@@ -56,18 +68,20 @@ const ReservationForm = () => {
       return;
     }
 
-    if (form.endingDate < form.startingDate) {
+    if (form.ending_date < form.starting_date) {
       enqueueSnackbar('Return date must come after the pick date', {
         variant: 'errorMessage',
         TransitionProps: { direction: 'down' },
         anchorOrigin: { vertical: 'top', horizontal: 'right' },
       });
       // Uncomment this line after adding redux action to prevent form submission
-      // return;
+      return;
     }
 
     // Put the redux action to send the form here
     // dispatch(submitReservation(form));
+    dispatch(addReservation(form));
+
   };
 
   const setSelectedDay = (day, key) => setForm({
@@ -101,13 +115,12 @@ const ReservationForm = () => {
   }, [isPickUpCalendarOpen, isReturnCalendarOpen]);
 
   return (
-    <form ref={formRef} onSubmit={handleFormSubmit} className="h-[620px] overflow-x-hidden overflow-y-auto md:overflow-visible md:h-fit rounded-lg p-3 shadow-lg flex md:flex-row justify-between border border-gray-100 flex-col md:max-w-[90%] w-full max-w-[400px] bg-gray-100 md:bg-[#ffffff5e]">
+    <form ref={formRef} onSubmit={handleFormSubmit} className="h-[620px] overflow-x-hidden overflow-y-scroll md:overflow-visible md:h-fit rounded-lg p-3 shadow-lg flex md:flex-row justify-between border border-gray-100 flex-col md:max-w-[90%] w-full max-w-[400px] bg-gray-100 md:bg-[#ffffff5e]">
       <label htmlFor="house" className="py-4 px-2 flex flex-col gap-4 relative md:w-[20%] w-full">
         <span className="text-xl font-semibold text-gray-600">Select a house</span>
-        <select onSelect={handleInput} name="house" id="house" className="w-full p-3 bg-white text-gray-800 border border-gray-200 rounded-md text-sm font-semibold focus-within:outline-none focus:ring-green-500 focus:border-green-500">
-          <option disabled value="">Select a house</option>
-          {/* Add list of houses here */}
-          <option value="condo">Condo</option>
+        <select onChange={handleInput} name="house_id" id="house_id" className="w-full p-3 bg-white text-gray-800 border border-gray-200 rounded-md text-sm font-semibold focus-within:outline-none focus:ring-green-500 focus:border-green-500">
+          <option selected="selected" disabled value="">Select a house</option>
+          { list && list.map((house) => (<option key={house.id} value={house.id}>{house.name}</option>)) }
         </select>
       </label>
       <Field
@@ -127,9 +140,9 @@ const ReservationForm = () => {
         placeholder="11/12/2021"
         label="Pick up date"
         id="starting-date"
-        name="startingDate"
+        name="starting_date"
         icon={<BsFillCalendarDateFill size={22} fill="#798497" />}
-        value={form.startingDate?.toLocaleDateString() || ''}
+        value={form.starting_date?.toLocaleDateString() || ''}
         onClick={() => setIsPickUpCalendarOpen(true)}
         readOnly
       >
@@ -138,14 +151,14 @@ const ReservationForm = () => {
             showOutsideDays
             fromDate={today}
             toDate={addMonths(today, 1)}
-            selected={form.startingDate}
+            selected={form.starting_date}
             fixedWeeks
             onDayClick={(day) => {
-              setSelectedDay(day, 'startingDate');
+              setSelectedDay(day, 'starting_date');
               setIsPickUpCalendarOpen(false);
 
-              if (form.endingDate && form.endingDate < day) {
-                setForm((prevForm) => ({ ...prevForm, endingDate: null }));
+              if (form.ending_date && form.ending_date < day) {
+                setForm((prevForm) => ({ ...prevForm, ending_date: null }));
               }
             }}
           />
@@ -158,20 +171,20 @@ const ReservationForm = () => {
         placeholder="01/07/2022"
         label="Return date"
         id="ending-date"
-        name="endingDate"
+        name="ending_date"
         icon={<BsFillCalendarDateFill size={22} fill="#798497" />}
-        value={form.endingDate?.toLocaleDateString() || ''}
+        value={form.ending_date?.toLocaleDateString() || ''}
         onClick={() => setIsReturnCalendarOpen(true)}
       >
         <div ref={returnCalendarRef} className={cn(`${isReturnCalendarOpen ? 'block' : 'hidden'}`)}>
           <DayPicker
             showOutsideDays
-            fromDate={form.startingDate ?? today}
-            toDate={addMonths(form.startingDate, 1) ?? today}
-            selected={form.endingDate}
+            fromDate={form.starting_date ?? today}
+            toDate={addMonths(form.starting_date, 1) ?? today}
+            selected={form.ending_date}
             fixedWeeks
             onDayClick={(day) => {
-              setSelectedDay(day, 'endingDate');
+              setSelectedDay(day, 'ending_date');
               setIsReturnCalendarOpen(false);
             }}
           />
