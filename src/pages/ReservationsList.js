@@ -7,7 +7,7 @@ import { FaTrashAlt } from 'react-icons/fa';
 import axios from 'axios';
 import './ReservationsList.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchReservations } from '../store/ReservationsSlice';
+import { getReservations } from '../store/ReservationsSlice';
 
 const ReservationsList = () => {
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ const ReservationsList = () => {
   });
 
   useEffect(() => {
-    dispatch(fetchReservations());
+    dispatch(getReservations());
   }, [dispatch, deleteReservation]);
 
   return (
