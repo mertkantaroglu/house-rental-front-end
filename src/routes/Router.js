@@ -7,7 +7,6 @@ import Reserve from '../pages/Reserve/Reserve';
 import LandingPage from '../pages/landingPage/Landing';
 import ReservationsList from '../pages/ReservationsList';
 
-
 const AppRouter = () => (
   <Routes>
     <Route exact path="/" element={<LandingPage />} />

@@ -29,5 +29,3 @@ Snackbar.propTypes = {
 };
 
 export default Snackbar;
-
-
