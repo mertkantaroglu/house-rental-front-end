@@ -6,6 +6,7 @@ import HousePage from '../components/House';
 import Reserve from '../pages/Reserve/Reserve';
 import LandingPage from '../pages/landingPage/Landing';
 import ReservationsList from '../pages/ReservationsList';
+import AddHouse from '../pages/AddHouse/AddHouse';
 
 const AppRouter = () => (
   <Routes>
@@ -14,7 +15,7 @@ const AppRouter = () => (
     <Route path="/houses/:id" element={<HousePage />} />
     <Route path="/reserve" element={<Reserve />} />
     <Route path="/my-reservations" element={<ReservationsList />} />
-    <Route path="/add" element={HousePage} />
+    <Route path="/add" element={<AddHouse />} />
     <Route path="/delete" element={<h1>Delete House jdjdjdjj</h1>} />
     <Route path="/login" element={<p>login page</p>} />
   </Routes>
