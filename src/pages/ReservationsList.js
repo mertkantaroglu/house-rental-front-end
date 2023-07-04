@@ -19,6 +19,7 @@ const ReservationsList = () => {
       `http://127.0.0.1:3000/api/v1/reservations/${reservationId}`,
     );
   });
+  console.log('data', data);
 
   useEffect(() => {
     dispatch(fetchReservations());
@@ -43,7 +44,7 @@ const ReservationsList = () => {
         {data.reservations.map((reservation) => (
           <li key={reservation.id} className="reservations-item">
             <span
-              onClick={() => navigate(`/house/${reservation.id}`)}
+              onClick={() => navigate(`/houses/${reservation.house_id}`)}
               className="reservation-name"
             >
               {reservation.name}
