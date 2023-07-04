@@ -11,8 +11,7 @@ import ReservationsList from '../pages/ReservationsList';
 
 const AppRouter = () => {
   const ProtectedRoute = ({ children }) => {
-    const user = useSelector((state) => state.authentication.user);
-    console.log(user);
+    const user = useSelector((state) => state.authentication.user) || JSON.parse(localStorage.getItem('user'));
 
     if (!user) {
       return <Navigate to="/" replace />;
