@@ -13,22 +13,19 @@ const Navbar = () => {
 
   return (
     <div className="header__navbar" ref={navRef}>
-      <button
-        type="button"
-        className="nav-btn nav-open-btn"
+      <FaBars
         onClick={showNavBar}
-      >
-        <FaBars />
-      </button>
+        className="nav-btn nav-open-btn"
+      />
       <nav className="navbar">
-        <button
-          type="button"
+        <FaTimes
           className="nav-btn nav-close-btn"
           onClick={showNavBar}
-        >
-          <FaTimes />
-        </button>
-        <img className="navbar__title" src={logo} alt="our logo" />
+        />
+
+        <section className="logo-cont">
+          <img className="navbar__title" src={logo} alt="our logo" />
+        </section>
         <ul className="navbar__links">
           <li>
             <NavLink to="houses" activeClassName="active">
