@@ -9,6 +9,6 @@ export default configureStore({
     house: houseReducer,
     houses: housesReducer,
     reservations: reservationsReducer,
-    authentication: authReducer
+    authentication: authReducer,
   },
 });

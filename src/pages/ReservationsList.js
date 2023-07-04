@@ -43,7 +43,7 @@ const ReservationsList = () => {
         {data.reservations.map((reservation) => (
           <li key={reservation.id} className="reservations-item">
             <span
-              onClick={() => navigate(`/house/${reservation.id}`)}
+              onClick={() => navigate(`/houses/${reservation.house_id}`)}
               className="reservation-name"
             >
               {reservation.name}
