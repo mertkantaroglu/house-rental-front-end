@@ -19,7 +19,6 @@ const ReservationsList = () => {
       `http://127.0.0.1:3000/api/v1/reservations/${reservationId}`,
     );
   });
-  console.log('data', data);
 
   useEffect(() => {
     dispatch(fetchReservations());
