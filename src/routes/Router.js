@@ -15,7 +15,6 @@ import AddHouse from '../pages/AddHouse/AddHouse';
 const AppRouter = () => {
   const ProtectedRoute = ({ children }) => {
     const user = useSelector((state) => state.authentication.user);
-    console.log(user);
 
     if (!user) {
       return <Navigate to="/" replace />;

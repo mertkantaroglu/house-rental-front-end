@@ -13,20 +13,24 @@ import { addReservation } from '../../store/ReservationsSlice';
 import { fetchHouses } from '../../store/HousesSlice';
 
 const ReservationForm = () => {
+
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.authentication)
+  console.log('user', user)
+
   const [form, setForm] = useState({
     house_id: '',
     city: '',
-    starting_date: null,
-    ending_date: null,
+    start_date: null,
+    end_date: null,
+    user_id: user.status.data.id,
   });
-
-  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchHouses());
   }, [dispatch]);
 
-  const { list } = useSelector((state) => state.house);
+  const { houses } = useSelector((state) => state.houses);
 
 
   const today = new Date();
@@ -41,45 +45,46 @@ const ReservationForm = () => {
   const handleFormSubmit = (ev) => {
     ev.preventDefault();
 
-    if (form.city.trim().length === 0) {
-      enqueueSnackbar('Please enter a city', {
-        variant: 'errorMessage',
-        TransitionProps: { direction: 'down' },
-        anchorOrigin: { vertical: 'top', horizontal: 'right' },
-      });
-      return;
-    }
+    // if (form.city.trim().length === 0) {
+    //   enqueueSnackbar('Please enter a city', {
+    //     variant: 'errorMessage',
+    //     TransitionProps: { direction: 'down' },
+    //     anchorOrigin: { vertical: 'top', horizontal: 'right' },
+    //   });
+    //   return;
+    // }
 
-    if (!form.starting_date) {
-      enqueueSnackbar('Please select a pick up date', {
-        variant: 'errorMessage',
-        TransitionProps: { direction: 'down' },
-        anchorOrigin: { vertical: 'top', horizontal: 'right' },
-      });
-      return;
-    }
+    // if (!form.start_date) {
+    //   enqueueSnackbar('Please select a pick up date', {
+    //     variant: 'errorMessage',
+    //     TransitionProps: { direction: 'down' },
+    //     anchorOrigin: { vertical: 'top', horizontal: 'right' },
+    //   });
+    //   return;
+    // }
 
-    if (!form.ending_date) {
-      enqueueSnackbar('Please select a return date', {
-        variant: 'errorMessage',
-        TransitionProps: { direction: 'down' },
-        anchorOrigin: { vertical: 'top', horizontal: 'right' },
-      });
-      return;
-    }
+    // if (!form.end_date) {
+    //   enqueueSnackbar('Please select a return date', {
+    //     variant: 'errorMessage',
+    //     TransitionProps: { direction: 'down' },
+    //     anchorOrigin: { vertical: 'top', horizontal: 'right' },
+    //   });
+    //   return;
+    // }
 
-    if (form.ending_date < form.starting_date) {
-      enqueueSnackbar('Return date must come after the pick date', {
-        variant: 'errorMessage',
-        TransitionProps: { direction: 'down' },
-        anchorOrigin: { vertical: 'top', horizontal: 'right' },
-      });
+    // if (form.end_date < form.start_date) {
+    //   enqueueSnackbar('Return date must come after the pick date', {
+    //     variant: 'errorMessage',
+    //     TransitionProps: { direction: 'down' },
+    //     anchorOrigin: { vertical: 'top', horizontal: 'right' },
+    //   });
       // Uncomment this line after adding redux action to prevent form submission
-      return;
-    }
+    //   return;
+    // }
 
     // Put the redux action to send the form here
     // dispatch(submitReservation(form));
+    console.log(form)
     dispatch(addReservation(form));
 
   };
@@ -120,7 +125,7 @@ const ReservationForm = () => {
         <span className="text-xl font-semibold text-gray-600">Select a house</span>
         <select onChange={handleInput} name="house_id" id="house_id" className="w-full p-3 bg-white text-gray-800 border border-gray-200 rounded-md text-sm font-semibold focus-within:outline-none focus:ring-green-500 focus:border-green-500">
           <option selected="selected" disabled value="">Select a house</option>
-          { list && list.map((house) => (<option key={house.id} value={house.id}>{house.name}</option>)) }
+          { houses && houses.map((house) => (<option key={house.id} value={house.id}>{house.name}</option>)) }
         </select>
       </label>
       <Field
@@ -139,10 +144,10 @@ const ReservationForm = () => {
         type="text"
         placeholder="11/12/2021"
         label="Pick up date"
-        id="starting-date"
-        name="starting_date"
+        id="start-date"
+        name="start_date"
         icon={<BsFillCalendarDateFill size={22} fill="#798497" />}
-        value={form.starting_date?.toLocaleDateString() || ''}
+        value={form.start_date?.toISOString().substr(0, 10) || ''}
         onClick={() => setIsPickUpCalendarOpen(true)}
         readOnly
       >
@@ -151,14 +156,14 @@ const ReservationForm = () => {
             showOutsideDays
             fromDate={today}
             toDate={addMonths(today, 1)}
-            selected={form.starting_date}
+            selected={form.start_date}
             fixedWeeks
             onDayClick={(day) => {
-              setSelectedDay(day, 'starting_date');
+              setSelectedDay(day, 'start_date');
               setIsPickUpCalendarOpen(false);
 
-              if (form.ending_date && form.ending_date < day) {
-                setForm((prevForm) => ({ ...prevForm, ending_date: null }));
+              if (form.end_date && form.end_date < day) {
+                setForm((prevForm) => ({ ...prevForm, end_date: null }));
               }
             }}
           />
@@ -170,21 +175,21 @@ const ReservationForm = () => {
         type="text"
         placeholder="01/07/2022"
         label="Return date"
-        id="ending-date"
-        name="ending_date"
+        id="end-date"
+        name="end_date"
         icon={<BsFillCalendarDateFill size={22} fill="#798497" />}
-        value={form.ending_date?.toLocaleDateString() || ''}
+        value={form.end_date?.toISOString().substr(0, 10) || ''}
         onClick={() => setIsReturnCalendarOpen(true)}
       >
         <div ref={returnCalendarRef} className={cn(`${isReturnCalendarOpen ? 'block' : 'hidden'}`)}>
           <DayPicker
             showOutsideDays
-            fromDate={form.starting_date ?? today}
-            toDate={addMonths(form.starting_date, 1) ?? today}
-            selected={form.ending_date}
+            fromDate={form.start_date ?? today}
+            toDate={addMonths(form.start_date, 1) ?? today}
+            selected={form.end_date}
             fixedWeeks
             onDayClick={(day) => {
-              setSelectedDay(day, 'ending_date');
+              setSelectedDay(day, 'end_date');
               setIsReturnCalendarOpen(false);
             }}
           />

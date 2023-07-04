@@ -5,8 +5,6 @@ const SHOW_HOUSE = 'house/SHOW/:id';
 const ADD_HOUSE = 'house/ADD';
 const DELETE_HOUSE = 'house/DELETE';
 
-// const baseUrl = 'http://127.0.0.1:3000/api/v1/houses';
-
 export const fetchHouse = createAsyncThunk('house/fetchHouse', async (id) => {
   const url = `http://localhost:3000/api/v1/houses/${id}`;
   const response = await fetch(url);
@@ -14,50 +12,8 @@ export const fetchHouse = createAsyncThunk('house/fetchHouse', async (id) => {
   return data;
 });
 
-
-
-// const houseSlice = createSlice({
-//   name: 'houses',
-//   initialState: {
-//     loading: false,
-//     house: {},
-//   },
-//   reducers: {},
-//   extraReducers: (builder) => {
-//     builder
-//       .addCase(fetchHouse.pending, (state) => {
-//         const newState = state;
-//         newState.loading = true;
-//       })
-//       .addCase(fetchHouse.fulfilled, (state, action) => {
-//         const newState = state;
-//         newState.loading = false;
-//         newState.house = action.payload;
-//       });
-//   },
-// });
-
-// export default houseSlice.reducer;
-
-
 // Base Url
 const BASE_URL = 'http://127.0.0.1:3000';
-// Method gethouses
-// export const getHouses = createAsyncThunk(SHOW_HOUSES, async (filter = null, thunkAPI) => {
-//   const API_URL = filter === true ? `${BASE_URL}/api/v1/houses?filter=true` : `${BASE_URL}/api/v1/houses`;
-//   const token = localStorage.getItem('token');
-//   const requestOptions = {
-//     method: 'GET',
-//     headers: {
-//       Authorization: `Bearer ${token}`,
-//     },
-//   };
-//   try {
-//     return await axios.get(API_URL, requestOptions);
-//   } catch (err) {
-//     return thunkAPI.rejectWithValue(err.response.data.error);
-//   }
-// });
 
 export const getHouse = createAsyncThunk(SHOW_HOUSE, async (id, thunkAPI) => {
   const API_URL = `${BASE_URL}/api/v1/houses/${id}`;
@@ -75,31 +31,12 @@ export const getHouse = createAsyncThunk(SHOW_HOUSE, async (id, thunkAPI) => {
   }
 });
 
-// Method Addhouse
-// export const addHouse = createAsyncThunk(ADD_HOUSE, async (house, thunkAPI) => {
-//   const API_URL = `${BASE_URL}/api/v1/houses`;
-//   const token = localStorage.getItem('token');
-//   const requestOptions = {
-//     method: 'POST',
-//     headers: {
-//       Authorization: `Bearer ${token}`,
-//     },
-//   };
-//   try {
-//     return await axios.post(API_URL, house, requestOptions);
-//   } catch (err) {
-//     return thunkAPI.rejectWithValue(err.response.data.error);
-//   }
-// });
-
 export const addHouse = createAsyncThunk('house/add', async (houseProperties, {rejectWithValue}) => {
   try {
     const response = await axios.post('http://localhost:3000/api/v1/houses', houseProperties)
-    console.log('the data is', response.data)
     return response.data
   }
   catch (error) {
-    console.log(error)
     return rejectWithValue(error.response.data.error)
   }
 })
@@ -130,7 +67,7 @@ const houseSlice = createSlice({
     success: false,
     error: null,
     list: [],
-    house: null,
+    house: {},
     response: null,
   },
   reducers: {
@@ -143,26 +80,6 @@ const houseSlice = createSlice({
     }),
   },
   extraReducers: (builder) => {
-    // Get houses
-    // builder.addCase(getHouses.pending, (state) => ({
-    //   ...state,
-    //   isLoading: true,
-    //   error: '',
-    // }));
-
-    // builder.addCase(getHouses.fulfilled, (state, action) => ({
-    //   ...state,
-    //   isLoading: false,
-    //   success: true,
-    //   list: action.payload.data.data.houses,
-    // }));
-
-
-    // builder.addCase(getHouses.rejected, (state, action) => ({
-    //   ...state,
-    //   isLoading: false,
-    //   error: action.payload,
-    // }));
 
     // Get house
     builder.addCase(getHouse.pending, (state) => ({
@@ -184,6 +101,26 @@ const houseSlice = createSlice({
       error: action.payload,
     }));
 
+
+    //Fetch house
+    builder.addCase(fetchHouse.pending, (state) => ({
+      ...state,
+      isLoading: true,
+      error: '',
+    }));
+
+    builder.addCase(fetchHouse.fulfilled, (state, action) => ({
+      ...state,
+      isLoading: false,
+      success: true,
+      house: action.payload,
+    }));
+
+    builder.addCase(fetchHouse.rejected, (state, action) => ({
+      ...state,
+      isLoading: false,
+      error: action.payload,
+    }));
     // Add house
 
     builder.addCase(addHouse.pending, (state) => ({
@@ -196,7 +133,7 @@ const houseSlice = createSlice({
       ...state,
       isLoading: false,
       success: true,
-      response: action.payload.data.data,
+      response: action.payload,
     }));
 
     builder.addCase(addHouse.rejected, (state, action) => ({

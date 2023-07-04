@@ -64,9 +64,7 @@ const AddHouse = () => {
     // if (!formInfo.validations.isValid) {
     //   return;
     // }
-    const newhouse = { ...formInfo };
-    console.log(newhouse);
-    console.log(user.data.id);
+    const newhouse = { ...formInfo, user_id:user.status.data.id };
     delete newhouse.validations;
     dispatch(addHouse(newhouse));
     setFormInfo(
