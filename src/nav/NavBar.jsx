@@ -1,14 +1,23 @@
 import { FaBars, FaTimes } from 'react-icons/fa';
 import React, { useRef } from 'react';
+import { useDispatch } from 'react-redux';
 import './NavBar.css';
 import { NavLink } from 'react-router-dom';
 import logo from '../images/logo.png';
+import { logoutUser } from '../store/AuthenticationSlice';
 
 const Navbar = () => {
   const navRef = useRef();
+  const dispatch = useDispatch();
 
   const showNavBar = () => {
     navRef.current.classList.toggle('responsive_nav');
+  };
+
+  const handleLogout = () => {
+    dispatch(logoutUser());
+    localStorage.removeItem('user');
+    window.location.reload();
   };
 
   return (
@@ -60,6 +69,9 @@ const Navbar = () => {
           HOUSE RENT APP
           {new Date().getFullYear()}
         </h3>
+        <button type="button" onClick={handleLogout} className="logout-btn">
+          Log Out
+        </button>
       </nav>
     </div>
   );
