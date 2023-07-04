@@ -10,7 +10,7 @@ import cn from '../../utils/classnames';
 import useOnClickOutside from '../../hooks/useOutSideClick';
 import addMonths from '../../utils/utils';
 import { addReservation } from '../../store/ReservationsSlice';
-import { getHouses } from '../../store/HouseSlice';
+import { fetchHouses } from '../../store/HousesSlice';
 
 const ReservationForm = () => {
   const [form, setForm] = useState({
@@ -23,7 +23,7 @@ const ReservationForm = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getHouses());
+    dispatch(fetchHouses());
   }, [dispatch]);
 
   const { list } = useSelector((state) => state.house);

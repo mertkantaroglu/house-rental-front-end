@@ -46,7 +46,7 @@ const AppRouter = () => {
         path="/reserve"
         element={(
           <ProtectedRoute>
-            <h1>Reserve House</h1>
+            <Reserve />
           </ProtectedRoute>
       )}
       />
@@ -62,7 +62,7 @@ const AppRouter = () => {
         path="/add"
         element={(
           <ProtectedRoute>
-            <h1>Add House</h1>
+            <AddHouse />
           </ProtectedRoute>
       )}
       />

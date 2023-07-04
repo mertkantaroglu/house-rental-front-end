@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import { addHouse } from '../store/HouseSlice';
+import { fetchHouse } from '../store/HouseSlice';
 import './House.css';
 
 const HousePage = () => {
