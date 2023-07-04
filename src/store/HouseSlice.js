@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+
 const SHOW_HOUSES = 'house/SHOW';
 const SHOW_HOUSE = 'house/SHOW/:id';
 const ADD_HOUSE = 'house/ADD';
@@ -31,15 +32,14 @@ export const getHouse = createAsyncThunk(SHOW_HOUSE, async (id, thunkAPI) => {
   }
 });
 
-export const addHouse = createAsyncThunk('house/add', async (houseProperties, {rejectWithValue}) => {
+export const addHouse = createAsyncThunk('house/add', async (houseProperties, { rejectWithValue }) => {
   try {
-    const response = await axios.post('http://localhost:3000/api/v1/houses', houseProperties)
-    return response.data
+    const response = await axios.post('http://localhost:3000/api/v1/houses', houseProperties);
+    return response.data;
+  } catch (error) {
+    return rejectWithValue(error.response.data.error);
   }
-  catch (error) {
-    return rejectWithValue(error.response.data.error)
-  }
-})
+});
 
 // Method Delete house
 export const deleteHouse = createAsyncThunk(DELETE_HOUSE, async (id, thunkAPI) => {
@@ -80,7 +80,6 @@ const houseSlice = createSlice({
     }),
   },
   extraReducers: (builder) => {
-
     // Get house
     builder.addCase(getHouse.pending, (state) => ({
       ...state,
@@ -101,8 +100,7 @@ const houseSlice = createSlice({
       error: action.payload,
     }));
 
-
-    //Fetch house
+    // Fetch house
     builder.addCase(fetchHouse.pending, (state) => ({
       ...state,
       isLoading: true,

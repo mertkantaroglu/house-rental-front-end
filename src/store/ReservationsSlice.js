@@ -25,17 +25,14 @@ export const getReservations = createAsyncThunk(SHOW_RESERVATIONS, async (thunkA
 });
 
 // Method AddReservation
-export const addReservation = createAsyncThunk('reservations/add', async (reservationProperties, {rejectWithValue}) => {
+export const addReservation = createAsyncThunk('reservations/add', async (reservationProperties, { rejectWithValue }) => {
   try {
-    const response = await axios.post('http://localhost:3000/api/v1/reservations', reservationProperties)
+    const response = await axios.post('http://localhost:3000/api/v1/reservations', reservationProperties);
     return response.data;
   } catch (error) {
-    return rejectWithValue(error.respose.data.error)
+    return rejectWithValue(error.respose.data.error);
   }
-  
-  
-  
-  
+
   // const API_URL = 'http://localhost:3000/api/v1/reservations';
   // const token = localStorage.getItem('token');
   // const requestOptions = {
@@ -49,7 +46,6 @@ export const addReservation = createAsyncThunk('reservations/add', async (reserv
   // } catch (err) {
   //   return thunkAPI.rejectWithValue(err.response.data.error);
   // }
-
 });
 
 // Method DeleteReservation
@@ -94,7 +90,7 @@ const reservationsSlice = createSlice({
         newState.reservations = action.payload;
       });
 
-          // Add Reservation
+    // Add Reservation
 
     builder.addCase(addReservation.pending, (state) => ({
       ...state,
@@ -148,8 +144,6 @@ export default reservationsSlice.reducer;
 //       isLoading: false,
 //       error: action.payload,
 //     }));
-
-
 
 //     // Delete Reservation
 
