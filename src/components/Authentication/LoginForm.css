@@ -33,3 +33,14 @@
   color: red;
   margin-top: 10px;
 }
+
+.prompt {
+  color: #fff;
+  font-weight: 400;
+  text-align: center;
+}
+
+.prompt span {
+  color: blue;
+  cursor: pointer;
+}
