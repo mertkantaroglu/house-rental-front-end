@@ -6,13 +6,16 @@ import {
 import { useSelector } from 'react-redux';
 import Homepage from '../components/Homepage';
 import HousePage from '../components/House';
+// import House from '../pages/House';
+import Reserve from '../pages/Reserve/Reserve';
 import LandingPage from '../pages/landingPage/Landing';
 import ReservationsList from '../pages/ReservationsList';
+import AddHouse from '../pages/AddHouse/AddHouse';
+import MyHouses from '../components/MyHouses/deleteHouse';
 
 const AppRouter = () => {
   const ProtectedRoute = ({ children }) => {
-    const user = useSelector((state) => state.authentication.user);
-    console.log(user);
+    const user = useSelector((state) => state.authentication.user) || JSON.parse(localStorage.getItem('user'));
 
     if (!user) {
       return <Navigate to="/" replace />;
@@ -43,7 +46,7 @@ const AppRouter = () => {
         path="/reserve"
         element={(
           <ProtectedRoute>
-            <h1>Reserve House</h1>
+            <Reserve />
           </ProtectedRoute>
       )}
       />
@@ -59,7 +62,7 @@ const AppRouter = () => {
         path="/add"
         element={(
           <ProtectedRoute>
-            <h1>Add House</h1>
+            <AddHouse />
           </ProtectedRoute>
       )}
       />
@@ -67,7 +70,7 @@ const AppRouter = () => {
         path="/delete"
         element={(
           <ProtectedRoute>
-            <h1>Delete House</h1>
+            <MyHouses />
           </ProtectedRoute>
       )}
       />

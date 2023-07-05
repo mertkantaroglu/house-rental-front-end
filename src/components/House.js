@@ -62,7 +62,7 @@ const HousePage = () => {
           </table>
           <div className="reserve-btn-cont">
             <Link
-              to={`/reservations/new/${house.id}`}
+              to="/reserve"
               className="reserve-btn"
             >
               RESERVE HOUSE

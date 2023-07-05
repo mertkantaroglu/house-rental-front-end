@@ -56,6 +56,7 @@ const authSlice = createSlice({
         const tempState = state;
         tempState.isLoading = false;
         tempState.user = payload;
+        localStorage.setItem('user', JSON.stringify(payload));
       })
       .addCase(loginUser.rejected, (state, { payload }) => {
         const tempState = state;
@@ -71,6 +72,7 @@ const authSlice = createSlice({
         const tempState = state;
         tempState.isLoading = false;
         tempState.user = null;
+        localStorage.removeItem('user');
       })
       .addCase(logoutUser.rejected, (state, { payload }) => {
         const tempState = state;

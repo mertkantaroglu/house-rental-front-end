@@ -1,9 +1,13 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { loginUser } from '../../store/AuthenticationSlice';
+import './LoginForm.css';
 
-const LoginForm = () => {
+const LoginForm = ({ toggleForm }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user, isLoading, error } = useSelector((state) => state.authentication);
@@ -23,7 +27,7 @@ const LoginForm = () => {
     e.preventDefault();
     dispatch(loginUser({ user: credentials })).then(() => {
       if (user) {
-        navigate('/home');
+        navigate('/houses');
       }
     });
   };
@@ -33,7 +37,7 @@ const LoginForm = () => {
   }
 
   return (
-    <form onSubmit={handleLogin}>
+    <form className="login-form" onSubmit={handleLogin}>
       <input
         type="email"
         name="email"
@@ -48,8 +52,13 @@ const LoginForm = () => {
         value={credentials.password}
         onChange={handleInputChange}
       />
+
       <button type="submit">Login</button>
       {error && <p>{error}</p>}
+      <small className="prompt">
+        Dont have an account?
+        <span onClick={toggleForm}> Signup</span>
+      </small>
     </form>
   );
 };

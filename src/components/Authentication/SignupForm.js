@@ -1,9 +1,13 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { signupUser } from '../../store/AuthenticationSlice';
+import './SignupForm.css';
 
-const SignupForm = () => {
+const SignupForm = ({ toggleForm }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user, isLoading, error } = useSelector((state) => state.authentication);
@@ -34,7 +38,7 @@ const SignupForm = () => {
   }
 
   return (
-    <form onSubmit={handleSignup}>
+    <form className="signup-form" onSubmit={handleSignup}>
       <input
         type="text"
         name="name"
@@ -58,6 +62,10 @@ const SignupForm = () => {
       />
       <button type="submit">Signup</button>
       {error && <p>{error.message}</p>}
+      <small className="prompt">
+        Already have an account?
+        <span onClick={toggleForm}> Signin</span>
+      </small>
     </form>
   );
 };
