@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { signupUser } from '../../store/AuthenticationSlice';
+import './SignupForm.css';
 
 const SignupForm = () => {
   const dispatch = useDispatch();
@@ -34,7 +35,7 @@ const SignupForm = () => {
   }
 
   return (
-    <form onSubmit={handleSignup}>
+    <form className="signup-form" onSubmit={handleSignup}>
       <input
         type="text"
         name="name"

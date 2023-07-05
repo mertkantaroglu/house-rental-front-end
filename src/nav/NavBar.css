@@ -49,6 +49,18 @@
   display: none;
 }
 
+.logout-btn {
+  background-color: red;
+  font-size: 16px;
+  color: white;
+  padding: 10px 0;
+  cursor: pointer;
+  width: 50%;
+  margin: 0 auto;
+  border-radius: 12px;
+  font-weight: 700;
+}
+
 @media (max-width: 910px) {
   .navbar__links {
     font-size: 1.3rem;
