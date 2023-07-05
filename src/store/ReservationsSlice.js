@@ -4,7 +4,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const SHOW_RESERVATIONS = 'reservations/SHOW';
-const ADD_RESERVATION = 'reservations/ADD';
+// const ADD_RESERVATION = 'reservations/ADD';
 const DELETE_RESERVATION = 'reservations/DELETE';
 
 // Method getReservations

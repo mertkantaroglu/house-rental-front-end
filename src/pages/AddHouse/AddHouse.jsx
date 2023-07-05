@@ -8,7 +8,6 @@ import FormErrors from '../../ui/FormErrors';
 import { addHouse } from '../../store/HouseSlice';
 
 const AddHouse = () => {
-  
   const formInfoState = {
     name: '',
     location: '',
@@ -27,7 +26,7 @@ const AddHouse = () => {
   };
   const [formInfo, setFormInfo] = useState(formInfoState);
   const dispatch = useDispatch();
-  const {user} = useSelector((state) => state.authentication)
+  const { user } = useSelector((state) => state.authentication);
 
   const validateField = (fieldName, fieldValue) => {
     const { formErrors } = formInfo.validations;
@@ -64,7 +63,7 @@ const AddHouse = () => {
     // if (!formInfo.validations.isValid) {
     //   return;
     // }
-    const newhouse = { ...formInfo, user_id:user.status.data.id };
+    const newhouse = { ...formInfo, user_id: user.status.data.id };
     delete newhouse.validations;
     dispatch(addHouse(newhouse));
     setFormInfo(
@@ -96,7 +95,7 @@ const AddHouse = () => {
         <Input name="name" type="text" onInput={handleInput} value={formInfo.name} isValid={formInfo.validations.nameValid} />
         <Input name="location" type="text" onInput={handleInput} value={formInfo.location} />
         <Input name="bedrooms" type="text" onInput={handleInput} value={formInfo.bedrooms} />
-        <Input name="bathrooms" type='number' onInput={handleInput} value={formInfo.bathrooms} />
+        <Input name="bathrooms" type="number" onInput={handleInput} value={formInfo.bathrooms} />
         <Input name="price" type="number" onInput={handleInput} value={formInfo.price} isValid={formInfo.validations.priceValid} />
         {/* <Images
           form={formInfo}
@@ -104,7 +103,7 @@ const AddHouse = () => {
           onChange={handleImage}
           onDelete={deleteImage}
         /> */}
-        <Input name='image' type='text' onInput={handleInput} value={formInfo.image} />
+        <Input name="image" type="text" onInput={handleInput} value={formInfo.image} />
         <input type="submit" value="Submit" />
       </form>
     </>

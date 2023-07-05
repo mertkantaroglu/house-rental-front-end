@@ -1,10 +1,11 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { MdLocationPin } from 'react-icons/md';
 import { BsFillCalendarDateFill } from 'react-icons/bs';
 import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
-import { enqueueSnackbar } from 'notistack';
+// import { enqueueSnackbar } from 'notistack';
 import Field from '../../ui/Field';
 import cn from '../../utils/classnames';
 import useOnClickOutside from '../../hooks/useOutSideClick';
@@ -13,10 +14,9 @@ import { addReservation } from '../../store/ReservationsSlice';
 import { fetchHouses } from '../../store/HousesSlice';
 
 const ReservationForm = () => {
-
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.authentication)
-  console.log('user', user)
+  const { user } = useSelector((state) => state.authentication);
+  console.log('user', user);
 
   const [form, setForm] = useState({
     house_id: '',
@@ -32,7 +32,6 @@ const ReservationForm = () => {
 
   const { houses } = useSelector((state) => state.houses);
 
-
   const today = new Date();
 
   const [isPickUpCalendarOpen, setIsPickUpCalendarOpen] = useState(false);
@@ -45,48 +44,8 @@ const ReservationForm = () => {
   const handleFormSubmit = (ev) => {
     ev.preventDefault();
 
-    // if (form.city.trim().length === 0) {
-    //   enqueueSnackbar('Please enter a city', {
-    //     variant: 'errorMessage',
-    //     TransitionProps: { direction: 'down' },
-    //     anchorOrigin: { vertical: 'top', horizontal: 'right' },
-    //   });
-    //   return;
-    // }
-
-    // if (!form.start_date) {
-    //   enqueueSnackbar('Please select a pick up date', {
-    //     variant: 'errorMessage',
-    //     TransitionProps: { direction: 'down' },
-    //     anchorOrigin: { vertical: 'top', horizontal: 'right' },
-    //   });
-    //   return;
-    // }
-
-    // if (!form.end_date) {
-    //   enqueueSnackbar('Please select a return date', {
-    //     variant: 'errorMessage',
-    //     TransitionProps: { direction: 'down' },
-    //     anchorOrigin: { vertical: 'top', horizontal: 'right' },
-    //   });
-    //   return;
-    // }
-
-    // if (form.end_date < form.start_date) {
-    //   enqueueSnackbar('Return date must come after the pick date', {
-    //     variant: 'errorMessage',
-    //     TransitionProps: { direction: 'down' },
-    //     anchorOrigin: { vertical: 'top', horizontal: 'right' },
-    //   });
-      // Uncomment this line after adding redux action to prevent form submission
-    //   return;
-    // }
-
-    // Put the redux action to send the form here
-    // dispatch(submitReservation(form));
-    console.log(form)
+    console.log(form);
     dispatch(addReservation(form));
-
   };
 
   const setSelectedDay = (day, key) => setForm({
@@ -120,12 +79,33 @@ const ReservationForm = () => {
   }, [isPickUpCalendarOpen, isReturnCalendarOpen]);
 
   return (
-    <form ref={formRef} onSubmit={handleFormSubmit} className="h-[620px] overflow-x-hidden overflow-y-scroll md:overflow-visible md:h-fit rounded-lg p-3 shadow-lg flex md:flex-row justify-between border border-gray-100 flex-col md:max-w-[90%] w-full max-w-[400px] bg-gray-100 md:bg-[#ffffff5e]">
-      <label htmlFor="house" className="py-4 px-2 flex flex-col gap-4 relative md:w-[20%] w-full">
-        <span className="text-xl font-semibold text-gray-600">Select a house</span>
-        <select onChange={handleInput} name="house_id" id="house_id" className="w-full p-3 bg-white text-gray-800 border border-gray-200 rounded-md text-sm font-semibold focus-within:outline-none focus:ring-green-500 focus:border-green-500">
-          <option selected="selected" disabled value="">Select a house</option>
-          { houses && houses.map((house) => (<option key={house.id} value={house.id}>{house.name}</option>)) }
+    <form
+      ref={formRef}
+      onSubmit={handleFormSubmit}
+      className="h-[620px] overflow-x-hidden overflow-y-scroll md:overflow-visible md:h-fit rounded-lg p-3 shadow-lg flex md:flex-row justify-between border border-gray-100 flex-col md:max-w-[90%] w-full max-w-[400px] bg-gray-100 md:bg-[#ffffff5e]"
+    >
+      <label
+        htmlFor="house"
+        className="py-4 px-2 flex flex-col gap-4 relative md:w-[20%] w-full"
+      >
+        <span className="text-xl font-semibold text-gray-600">
+          Select a house
+        </span>
+        <select
+          onChange={handleInput}
+          name="house_id"
+          id="house_id"
+          className="w-full p-3 bg-white text-gray-800 border border-gray-200 rounded-md text-sm font-semibold focus-within:outline-none focus:ring-green-500 focus:border-green-500"
+        >
+          <option selected="selected" disabled value="">
+            Select a house
+          </option>
+          {houses
+            && houses.map((house) => (
+              <option key={house.id} value={house.id}>
+                {house.name}
+              </option>
+            ))}
         </select>
       </label>
       <Field
@@ -151,7 +131,10 @@ const ReservationForm = () => {
         onClick={() => setIsPickUpCalendarOpen(true)}
         readOnly
       >
-        <div ref={pickUpCalendarRef} className={cn(`${isPickUpCalendarOpen ? 'block' : 'hidden'}`)}>
+        <div
+          ref={pickUpCalendarRef}
+          className={cn(`${isPickUpCalendarOpen ? 'block' : 'hidden'}`)}
+        >
           <DayPicker
             showOutsideDays
             fromDate={today}
@@ -181,7 +164,10 @@ const ReservationForm = () => {
         value={form.end_date?.toISOString().substr(0, 10) || ''}
         onClick={() => setIsReturnCalendarOpen(true)}
       >
-        <div ref={returnCalendarRef} className={cn(`${isReturnCalendarOpen ? 'block' : 'hidden'}`)}>
+        <div
+          ref={returnCalendarRef}
+          className={cn(`${isReturnCalendarOpen ? 'block' : 'hidden'}`)}
+        >
           <DayPicker
             showOutsideDays
             fromDate={form.start_date ?? today}
@@ -196,7 +182,12 @@ const ReservationForm = () => {
         </div>
       </Field>
       <div className="py-4 px-2 flex flex-col justify-end relative md:w-[14%] w-[200px] max-w-[60%] md:mx-0 mx-auto">
-        <button type="submit" className="p-3 bg-green-500 text-white rounded-md font-semibold">SUBMIT</button>
+        <button
+          type="submit"
+          className="p-3 bg-green-500 text-white rounded-md font-semibold"
+        >
+          SUBMIT
+        </button>
       </div>
     </form>
   );
