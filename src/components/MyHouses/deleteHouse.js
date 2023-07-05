@@ -13,22 +13,27 @@ const MyHouses = () => {
   const user = useSelector((state) => state.authentication);
   console.log('Users', user);
 
-  const reservations = useSelector((state) => state.reservations);
+  const reservations = useSelector((state) => state.reservations.reservations);
+  console.log('2wweer: ', reservations);
   const data = useSelector((state) => state.houses);
   console.log(data);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // const deleteReservation = useCallback(async (reservationId) => {
-  //   await axios.delete(
-  //     `http://127.0.0.1:3000/api/v1/reservations/${reservationId}`,
-  //   );
-  // });
-
   const deleteHouse = useCallback(async (houseId) => {
-    await axios.delete(
-      `http://127.0.0.1:3000/api/v1/houses/${houseId}`,
+    const houseReservations = reservations.filter(
+      (reservation) => reservation.houseId === houseId,
     );
+
+    // Delete the associated reservations first
+    await Promise.all(
+      houseReservations.map((reservation) => axios.delete(
+        `http://127.0.0.1:3000/api/v1/reservations/${reservation.id}`,
+      )),
+    );
+
+    // Delete the house after reservations are deleted
+    await axios.delete(`http://127.0.0.1:3000/api/v1/houses/${houseId}`);
   });
 
   useEffect(() => {
