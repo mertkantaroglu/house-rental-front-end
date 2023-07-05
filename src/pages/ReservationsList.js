@@ -7,12 +7,14 @@ import { FaTrashAlt } from 'react-icons/fa';
 import axios from 'axios';
 import './ReservationsList.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { getReservations } from '../store/ReservationsSlice';
+import { fetchReservations } from '../store/ReservationsSlice';
 
 const ReservationsList = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const data = useSelector((state) => state.reservations);
+
+  console.log('2020', data);
 
   const deleteReservation = useCallback(async (reservationId) => {
     await axios.delete(
@@ -21,8 +23,8 @@ const ReservationsList = () => {
   });
 
   useEffect(() => {
-    dispatch(getReservations());
-  }, [dispatch, deleteReservation]);
+    dispatch(fetchReservations());
+  }, [dispatch]);
 
   return (
     <div className="reservations-cont">

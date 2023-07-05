@@ -3,26 +3,26 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 // import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const SHOW_RESERVATIONS = 'reservations/SHOW';
+// const SHOW_RESERVATIONS = 'reservations/SHOW';
 // const ADD_RESERVATION = 'reservations/ADD';
 const DELETE_RESERVATION = 'reservations/DELETE';
 
 // Method getReservations
-export const getReservations = createAsyncThunk(SHOW_RESERVATIONS, async (thunkAPI) => {
-  const API_URL = 'http://localhost:3000/api/v1/reservations';
-  const token = localStorage.getItem('token');
-  const requestOptions = {
-    method: 'GET',
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  };
-  try {
-    return await axios.get(API_URL, requestOptions);
-  } catch (err) {
-    return thunkAPI.rejectWithValue(err.response.data.error);
-  }
-});
+// export const getReservations = createAsyncThunk(SHOW_RESERVATIONS, async (thunkAPI) => {
+//   const API_URL = 'http://localhost:3000/api/v1/reservations';
+//   const token = localStorage.getItem('token');
+//   const requestOptions = {
+//     method: 'GET',
+//     headers: {
+//       Authorization: `Bearer ${token}`,
+//     },
+//   };
+//   try {
+//     return await axios.get(API_URL, requestOptions);
+//   } catch (err) {
+//     return thunkAPI.rejectWithValue(err.response.data.error);
+//   }
+// });
 
 // Method AddReservation
 export const addReservation = createAsyncThunk('reservations/add', async (reservationProperties, { rejectWithValue }) => {
@@ -30,7 +30,7 @@ export const addReservation = createAsyncThunk('reservations/add', async (reserv
     const response = await axios.post('http://localhost:3000/api/v1/reservations', reservationProperties);
     return response.data;
   } catch (error) {
-    return rejectWithValue(error.respose.data.error);
+    return rejectWithValue(error.response.data.error);
   }
 
   // const API_URL = 'http://localhost:3000/api/v1/reservations';
@@ -88,6 +88,7 @@ const reservationsSlice = createSlice({
         const newState = state;
         newState.loading = false;
         newState.reservations = action.payload;
+        console.log('22222222:', newState.reservations);
       });
 
     // Add Reservation
@@ -109,6 +110,46 @@ const reservationsSlice = createSlice({
       ...state,
       isLoading: false,
       errors: action.payload,
+    }));
+    // // Get Reservations
+    // builder.addCase(getReservations.pending, (state) => ({
+    //   ...state,
+    //   isLoading: true,
+    //   error: '',
+    // }));
+
+    // builder.addCase(getReservations.fulfilled, (state, action) => ({
+    //   ...state,
+    //   isLoading: false,
+    //   success: true,
+    //   list: action.payload,
+    // }));
+
+    // builder.addCase(getReservations.rejected, (state, action) => ({
+    //   ...state,
+    //   isLoading: false,
+    //   error: action.payload,
+    // }));
+
+    // Delete Reservation
+
+    builder.addCase(deleteReservation.pending, (state) => ({
+      ...state,
+      isLoading: true,
+      error: '',
+    }));
+
+    builder.addCase(deleteReservation.fulfilled, (state, action) => ({
+      ...state,
+      isLoading: false,
+      success: true,
+      id: action.payload.data.data,
+    }));
+
+    builder.addCase(deleteReservation.rejected, (state, action) => ({
+      ...state,
+      isLoading: false,
+      error: action.payload.data.error,
     }));
   },
 });

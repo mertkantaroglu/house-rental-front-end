@@ -65,6 +65,7 @@ const AddHouse = () => {
     // }
     const newhouse = { ...formInfo, user_id: user.status.data.id };
     delete newhouse.validations;
+    console.log('ppp', newhouse);
     dispatch(addHouse(newhouse));
     setFormInfo(
       formInfoState,
