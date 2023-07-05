@@ -120,7 +120,7 @@
 }
 
 @media (min-width: 768px) {
-    .form__container {
-        overflow-y: scroll;
-    }
+  .form__container {
+    overflow-y: scroll;
+  }
 }
