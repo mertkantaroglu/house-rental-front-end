@@ -27,9 +27,9 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 house Rental <a name="about-project"></a>
+# 📖 House Rental App <a name="about-project"></a>
 
-This is the Front-end of house Rental App that allows users to reserve a house, add a new house or delete an existing one.
+This is the Front-end of the House Rental App that allows users to reserve a house, add a new house, or delete an existing one.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -95,7 +95,7 @@ In order to run this project you need to install these prerequisites:
 
 > [Git](https://git-scm.com/)
 
-- If you're running on Linux follow these steps down below:
+- If you're running on Linux follow the steps down below:
 
 - Install git.
 
@@ -134,7 +134,7 @@ To test the project, run the following
 ```
 ### Usage
 
-#### Create an .env file with the following:
+#### Create a .env file with the following:
 
 ```
 REACT_APP_BASE_URL=yourlinktobackendapi
@@ -192,7 +192,7 @@ Feel free to check the [issues page](https://github.com/LeslieAine/house-rental-
 
 ## ⭐️ Show your support <a name="support"></a>
 
-If you like this project by staring it.
+If you like this project please give us a ⭐️.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -200,7 +200,7 @@ If you like this project by staring it.
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-I would like to thank Microverse for the project.
+We would like to thank Microverse for the project.
 
 [Design guidelines](https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign) provided by [Murat Korkmaz](https://www.behance.net/muratk) on Behance.
 
