@@ -1,4 +1,4 @@
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { FaBars, FaTimes, FaUserCircle } from 'react-icons/fa';
 import React, { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import './NavBar.css';
@@ -62,13 +62,14 @@ const Navbar = () => {
             </NavLink>
           </li>
         </ul>
+        <button type="button" onClick={handleLogout} className="signout-btn">
+          <FaUserCircle />
+          Log Out
+        </button>
         <h3 className="navbar__footer">
           HOUSE RENT APP
           {new Date().getFullYear()}
         </h3>
-        <button type="button" onClick={handleLogout} className="logout-btn">
-          Log Out
-        </button>
       </nav>
     </div>
   );

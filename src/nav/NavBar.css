@@ -52,6 +52,16 @@
   float: right;
 }
 
+.signout-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signout-btn:hover {
+  background-color: var(--bg-green);
+}
+
 @media (max-width: 680px) {
   .nav-btn {
     display: block;

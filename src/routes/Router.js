@@ -11,6 +11,7 @@ import Reserve from '../pages/Reserve/Reserve';
 import LandingPage from '../pages/landingPage/Landing';
 import ReservationsList from '../pages/ReservationsList';
 import AddHouse from '../pages/AddHouse/AddHouse';
+import MyHouses from '../components/MyHouses/deleteHouse';
 
 const AppRouter = () => {
   const ProtectedRoute = ({ children }) => {
@@ -69,7 +70,7 @@ const AppRouter = () => {
         path="/delete"
         element={(
           <ProtectedRoute>
-            <h1>Delete House</h1>
+            <MyHouses />
           </ProtectedRoute>
       )}
       />
