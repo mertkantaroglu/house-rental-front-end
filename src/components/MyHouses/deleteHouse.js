@@ -10,21 +10,20 @@ import { fetchReservations } from '../../store/ReservationsSlice';
 import { loginUser } from '../../store/AuthenticationSlice';
 
 const MyHouses = () => {
-  const user = useSelector((state) => state.authentication)
+  const user = useSelector((state) => state.authentication);
   console.log('Users', user);
 
-  const reservations = useSelector((state) => state.reservations)
+  const reservations = useSelector((state) => state.reservations);
   const data = useSelector((state) => state.houses);
   console.log(data);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-
-  const deleteReservation = useCallback(async (reservationId) => {
-    await axios.delete(
-      `http://127.0.0.1:3000/api/v1/reservations/${reservationId}`,
-    );
-  });
+  // const deleteReservation = useCallback(async (reservationId) => {
+  //   await axios.delete(
+  //     `http://127.0.0.1:3000/api/v1/reservations/${reservationId}`,
+  //   );
+  // });
 
   const deleteHouse = useCallback(async (houseId) => {
     await axios.delete(
@@ -62,7 +61,8 @@ const MyHouses = () => {
               <FaTrashAlt
                 onClick={() => {
                   // deleteReservation(reservation.id)
-                  deleteHouse(house.id)}}
+                  deleteHouse(house.id);
+                }}
                 className="delete-btn"
               />
             </span>
