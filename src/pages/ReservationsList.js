@@ -14,8 +14,6 @@ const ReservationsList = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.reservations);
 
-  console.log('2020', data);
-
   const deleteReservation = useCallback(async (reservationId) => {
     await axios.delete(
       `http://127.0.0.1:3000/api/v1/reservations/${reservationId}`,
