@@ -19,4 +19,5 @@ const CloseBtn = (props) => (
     />
   </svg>
 );
+
 export default CloseBtn;
