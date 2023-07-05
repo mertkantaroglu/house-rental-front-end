@@ -3,18 +3,16 @@ import './App.css';
 import NavBar from './nav/NavBar';
 import AppRouter from './routes/Router';
 
-function App() {
-  return (
-    <div className="app-container">
-      <BrowserRouter>
-        <NavBarContainer />
-        <section className="main-content">
-          <AppRouter />
-        </section>
-      </BrowserRouter>
-    </div>
-  );
-}
+const App = () => (
+  <div className="app-container">
+    <BrowserRouter>
+      <NavBarContainer />
+      <section className="main-content">
+        <AppRouter />
+      </section>
+    </BrowserRouter>
+  </div>
+);
 
 export default App;
 

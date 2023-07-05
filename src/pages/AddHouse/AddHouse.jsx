@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './index.css';
 import Input from '../../components/Input/Input';
-// import Dropdown from '../../components/Dropdown/Dropdown';
-// import Images from '../../components/Images/Images';
 import FormErrors from '../../ui/FormErrors';
 import { addHouse } from '../../store/HouseSlice';
 
@@ -60,32 +58,14 @@ const AddHouse = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    // if (!formInfo.validations.isValid) {
-    //   return;
-    // }
     const newhouse = { ...formInfo, user_id: user.status.data.id };
     delete newhouse.validations;
-    console.log('ppp', newhouse);
     dispatch(addHouse(newhouse));
     setFormInfo(
       formInfoState,
     );
   };
-  // const addImage = () => {
-  //   const newImages = [...formInfo.images, ''];
-  //   setFormInfo({ ...formInfo, images: newImages });
-  // };
-  // const deleteImage = (i) => {
-  //   const newImages = [...formInfo.images];
-  //   newImages.splice(i, 1);
-  //   setFormInfo({ ...formInfo, images: newImages });
-  // };
-  // const handleImage = (e, index) => {
-  //   const newImages = [...formInfo.images];
-  //   newImages[index] = e.target.value;
-  //   setFormInfo({ ...formInfo, images: newImages });
-  // };
-  // house form
+
   const houseForm = () => (
     <>
       <h2>Add A house</h2>
@@ -98,12 +78,6 @@ const AddHouse = () => {
         <Input name="bedrooms" type="text" onInput={handleInput} value={formInfo.bedrooms} />
         <Input name="bathrooms" type="number" onInput={handleInput} value={formInfo.bathrooms} />
         <Input name="price" type="number" onInput={handleInput} value={formInfo.price} isValid={formInfo.validations.priceValid} />
-        {/* <Images
-          form={formInfo}
-          onAdd={addImage}
-          onChange={handleImage}
-          onDelete={deleteImage}
-        /> */}
         <Input name="image" type="text" onInput={handleInput} value={formInfo.image} />
         <input type="submit" value="Submit" />
       </form>

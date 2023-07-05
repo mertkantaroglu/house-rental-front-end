@@ -16,8 +16,6 @@ import { fetchHouses } from '../../store/HousesSlice';
 const ReservationForm = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.authentication);
-  console.log('user', user);
-
   const [form, setForm] = useState({
     house_id: '',
     city: '',
@@ -44,7 +42,6 @@ const ReservationForm = () => {
   const handleFormSubmit = (ev) => {
     ev.preventDefault();
 
-    console.log(form);
     dispatch(addReservation(form));
   };
 

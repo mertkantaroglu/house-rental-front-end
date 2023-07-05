@@ -15,4 +15,5 @@ const Hamburger = (props) => (
     <path stroke="#0E7EE7" strokeWidth={5} d="M0 2.5h25M0 12.5h25M0 22.5h25" />
   </svg>
 );
+
 export default Hamburger;

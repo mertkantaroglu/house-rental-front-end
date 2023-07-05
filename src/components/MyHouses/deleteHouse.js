@@ -30,6 +30,7 @@ const MyHouses = () => {
 
     // Delete the house after reservations are deleted
     await axios.delete(`http://127.0.0.1:3000/api/v1/houses/${houseId}`);
+    dispatch(fetchHouses());
   });
 
   useEffect(() => {
