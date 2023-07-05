@@ -7,7 +7,6 @@ import './House.css';
 const HousePage = () => {
   const dispatch = useDispatch();
   const house = useSelector((state) => state.house.house);
-  console.log(house);
   const { id } = useParams();
 
   useEffect(() => {
