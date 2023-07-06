@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom'
 import './index.css';
 import Input from '../../components/Input/Input';
 import FormErrors from '../../ui/FormErrors';
@@ -25,6 +26,7 @@ const AddHouse = () => {
   const [formInfo, setFormInfo] = useState(formInfoState);
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.authentication);
+  const navigate = useNavigate()
 
   const validateField = (fieldName, fieldValue) => {
     const { formErrors } = formInfo.validations;
@@ -61,6 +63,7 @@ const AddHouse = () => {
     const newhouse = { ...formInfo, user_id: user.status.data.id };
     delete newhouse.validations;
     dispatch(addHouse(newhouse));
+    navigate('/houses')
     setFormInfo(
       formInfoState,
     );
