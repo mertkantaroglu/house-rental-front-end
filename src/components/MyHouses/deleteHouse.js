@@ -18,7 +18,7 @@ const MyHouses = () => {
 
   const deleteHouse = (async (houseId) => {
     const houseReservations = reservations.filter(
-      (reservation) => reservation.houseId === houseId,
+      (reservation) => reservation.house_id === houseId,
     );
 
     // Delete the associated reservations first
@@ -60,7 +60,6 @@ const MyHouses = () => {
             <span type="button">
               <FaTrashAlt
                 onClick={() => {
-                  // deleteReservation(reservation.id)
                   deleteHouse(house.id);
                 }}
                 className="delete-btn"
