@@ -135,8 +135,6 @@
   .scroll-buttons {
     position: absolute;
     margin-top: -10%;
-
-    /* width: 84.2%; */
     left: 13.3rem;
     right: 0;
     display: flex;

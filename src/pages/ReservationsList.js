@@ -35,7 +35,7 @@ const ReservationsList = () => {
 
   return (
     <div className="reservations-cont">
-      <h3>Reservations</h3>
+      <h2>Reservations</h2>
       <ul className="reservations-list">
         <li className="reservations-list-header">
           <span className="name">Name</span>
@@ -57,7 +57,7 @@ const ReservationsList = () => {
             >
               {getHouseName(reservation.house_id)}
             </span>
-            <span>{reservation.city}</span>
+            <span className="reservation-location">{reservation.city}</span>
             <span className="reservation-start-date">
               {reservation.start_date}
             </span>

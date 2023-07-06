@@ -70,7 +70,7 @@ const NavBar = () => {
         </li>
         <li>
           <button type="button" onClick={handleLogout} className="signout-btn">
-            <FaUserCircle />
+            <FaUserCircle className="btn-logo" />
             Log Out
           </button>
         </li>

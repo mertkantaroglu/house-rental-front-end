@@ -5,7 +5,6 @@ import { MdLocationPin } from 'react-icons/md';
 import { BsFillCalendarDateFill } from 'react-icons/bs';
 import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
-// import { enqueueSnackbar } from 'notistack';
 import Field from '../../ui/Field';
 import cn from '../../utils/classnames';
 import useOnClickOutside from '../../hooks/useOutSideClick';

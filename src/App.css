@@ -5,12 +5,10 @@
 @media (min-width: 768px) {
   .app-container {
     display: flex;
-
-    /* overflow: hidden; */
   }
 
   .navbar-container {
-    width: 200px; /* Adjust the width as needed */
+    width: 200px;
     background-color: #f1f1f1;
     padding: 20px;
   }
@@ -42,7 +40,6 @@ body {
 }
 
 #root {
-  /* display: flex; */
   width: 100%;
   min-height: 100vh;
 }

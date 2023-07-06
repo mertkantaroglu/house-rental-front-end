@@ -22,6 +22,7 @@
 .img-container img {
   width: auto;
   height: 100%;
+  border-radius: 12px;
 }
 
 .info-container {
@@ -31,6 +32,8 @@
 .info-container h3 {
   text-align: center;
   margin: 15px;
+  font-weight: 600;
+  font-size: 18px;
 }
 
 table {

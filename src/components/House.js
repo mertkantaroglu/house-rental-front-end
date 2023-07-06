@@ -14,7 +14,7 @@ const HousePage = () => {
   }, [dispatch, id]);
   return (
     <>
-      <h3 className="page-title">House Details</h3>
+      <h2 className="page-title">House Details</h2>
       <div className="house-cont">
         <div className="img-container">
           <img src={house.image} alt={house.name} />

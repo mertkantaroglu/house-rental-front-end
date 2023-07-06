@@ -1,0 +1,29 @@
+.house-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin: 2%;
+}
+
+.house-name {
+  text-align: center;
+  font-size: 24px;
+}
+
+.house-img {
+  width: 250px;
+  height: 250px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.house-del-btn {
+  background-color: red;
+  color: white;
+  border-radius: 12px;
+  font-size: 18px;
+  text-align: center;
+  display: flex;
+  margin: auto;
+  padding: 5px 20px;
+}
