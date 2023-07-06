@@ -85,7 +85,8 @@ nav {
   padding: 10px;
 }
 
-.left-btn, .right-btn {
+.left-btn,
+.right-btn {
   display: flex;
   justify-content: center;
   align-items: center;
