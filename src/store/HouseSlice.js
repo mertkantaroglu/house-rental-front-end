@@ -1,9 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-// const SHOW_HOUSES = 'house/SHOW';
 const SHOW_HOUSE = 'house/SHOW/:id';
-// const ADD_HOUSE = 'house/ADD';
 const DELETE_HOUSE = 'house/DELETE';
 
 export const fetchHouse = createAsyncThunk('house/fetchHouse', async (id) => {

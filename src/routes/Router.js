@@ -6,7 +6,6 @@ import {
 import { useSelector } from 'react-redux';
 import Homepage from '../components/Homepage';
 import HousePage from '../components/House';
-// import House from '../pages/House';
 import Reserve from '../pages/Reserve/Reserve';
 import LandingPage from '../pages/landingPage/Landing';
 import ReservationsList from '../pages/ReservationsList';
