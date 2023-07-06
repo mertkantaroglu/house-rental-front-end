@@ -37,10 +37,15 @@ export const logoutUser = createAsyncThunk(
   },
 );
 
+const getUserFromLocalStorage = () => {
+  const user = localStorage.getItem('user');
+  return user ? JSON.parse(user) : null;
+};
+
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
-    user: null,
+    user: getUserFromLocalStorage(),
     isLoading: false,
     error: null,
   },
