@@ -1,0 +1,141 @@
+nav {
+  width: 100%;
+  background-color: white;
+  opacity: 0.9;
+}
+
+.nav-icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  left: 0;
+  top: 25px;
+  padding: 5px 10px;
+  box-sizing: border-box;
+}
+
+.logo-cont {
+  width: 50px;
+  height: 40px;
+}
+
+.logo {
+  width: 100%;
+  height: 100%;
+}
+
+.nav-list {
+  visibility: hidden;
+  display: none;
+  list-style: none;
+}
+
+.nav-list li {
+  list-style-type: none;
+  padding: 10px 5px 0 0;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+  width: 100%;
+  display: block;
+  text-transform: capitalize;
+  padding: 10px;
+}
+
+.nav-link:hover {
+  color: white;
+  background-color: rgb(198, 235, 143);
+}
+
+.nav-list li :active {
+  color: white;
+  background-color: rgba(204, 255, 0, 1);
+}
+
+.visible {
+  visibility: visible;
+  display: block;
+}
+
+.navbar-footer {
+  display: none;
+}
+
+.signout-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  margin: 0 0 20px 10px;
+}
+
+.btn-logo {
+  margin-right: 5px;
+}
+
+.signout-btn:hover {
+  color: white;
+  background-color: rgb(198, 235, 143);
+  padding: 10px;
+}
+
+.left-btn,
+.right-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  nav {
+    width: 213px;
+    height: 100vh;
+    position: relative;
+    background-color: white;
+    border-right: rgb(161, 147, 147) 1px solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .logo-cont {
+    margin-top: 100px;
+    width: 80%;
+    height: 130px;
+    background-color: red;
+  }
+
+  .toggled-btns {
+    display: none;
+  }
+
+  .nav-list {
+    visibility: visible;
+    display: block;
+    margin: 10px;
+  }
+
+  .nav-list li {
+    text-align: left;
+    list-style-type: none;
+    padding: 10px 5px 0 0;
+  }
+
+  .nav-link {
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  .navbar-footer {
+    font-size: 10px;
+    justify-content: center;
+    text-align: center;
+    display: block;
+  }
+}

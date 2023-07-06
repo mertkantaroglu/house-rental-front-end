@@ -1,0 +1,52 @@
+.landing-page {
+  display: flex;
+  flex-direction: column;
+  background-image: url(../../assets/new.jpg);
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.landing-page-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+}
+
+.landing-page-content h1 {
+  color: white;
+  font-size: 30px;
+  text-align: center;
+}
+
+.landing-page-btn {
+  color: white;
+  font-size: 25px;
+  text-align: center;
+  background-color: yellowgreen;
+  width: 200px;
+  height: 50px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* add animation to the button */
+.landing-page-btn:hover {
+  background-color: rgb(21, 226, 79);
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+@media (min-width: 768px) {
+  .landing-page-content h1 {
+    font-size: 50px;
+  }
+}
