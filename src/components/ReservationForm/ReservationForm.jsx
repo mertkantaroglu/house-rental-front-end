@@ -40,7 +40,7 @@ const ReservationForm = () => {
   const formRef = useRef(null);
 
   const handleFormSubmit = (ev) => {
-    ev.preventDefault()
+    ev.preventDefault();
     dispatch(addReservation(form));
     setForm({
       house_id: '',
@@ -48,7 +48,7 @@ const ReservationForm = () => {
       start_date: null,
       end_date: null,
       user_id: user.status.data.id,
-    })
+    });
   };
 
   const setSelectedDay = (day, key) => setForm({
