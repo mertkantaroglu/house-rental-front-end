@@ -74,7 +74,7 @@ const AddHouse = () => {
 
   const houseForm = () => (
     <>
-      <h2>Add A house</h2>
+      <h2>Add a House</h2>
       <FormErrors formErrors={formInfo.validations.formErrors} />
       <form onSubmit={handleSubmit}>
         <Input

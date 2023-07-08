@@ -1,8 +1,7 @@
 #add_house,
 #form {
-  background:
-    linear-gradient(to right, #97c0027a, #97c00250),
-    url("https://unsplash.com/photos/2keCPb73aQY");
+  background-image: linear-gradient(to right, rgba(151, 192, 2, 0.1), rgba(151, 192, 2, 0.1)), url('/src/assets/background.jpg');
+  background-size: cover;
   background-repeat: no-repeat;
   background-size: 100% 100%;
   width: 100%;
@@ -33,9 +32,14 @@
 .form__container textarea {
   width: 100%;
   padding: 0.5rem 1rem;
-  border: 1px solid #ddd;
+  border: 1px solid darkgray;
   font-size: 1.2rem;
   color: #000;
+  border-radius: 8px;
+}
+
+.form__container input:active, .form__container textarea:active {
+  border: 1px solid black;
 }
 
 .form__container input.error,
@@ -46,7 +50,11 @@
 .form__container input[type="submit"] {
   cursor: pointer;
   margin-top: 1rem;
-  background-color: #97c00254;
+  background-color: #cbed9a;
+}
+
+.form__container input[type="submit"]:active {
+  background-color: rgba(204, 255, 0, 1);
 }
 
 .form__container input[type="submit"]:hover {
