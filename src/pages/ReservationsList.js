@@ -3,12 +3,11 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaTrashAlt } from 'react-icons/fa';
 import axios from 'axios';
-import './ReservationsList.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchReservations } from '../store/ReservationsSlice';
 import { fetchHouses } from '../store/HousesSlice';
+import './ReservationsList.css';
 
 const ReservationsList = () => {
   const navigate = useNavigate();
@@ -23,10 +22,7 @@ const ReservationsList = () => {
     dispatch(fetchReservations());
   });
 
-  const getHouseName = (houseId) => {
-    const house = houses.houses.find((house) => house.id === houseId);
-    return house ? house.name : '';
-  };
+  const getHouse = (houseId) => houses.houses.find((house) => house.id === houseId);
 
   useEffect(() => {
     dispatch(fetchHouses());
@@ -35,42 +31,29 @@ const ReservationsList = () => {
 
   return (
     <div className="reservations-cont">
-      <h2>Reservations</h2>
-      <ul className="reservations-list">
-        <li className="reservations-list-header">
-          <span className="name">Name</span>
-          {' '}
-          <span className="address">Address</span>
-          {' '}
-          <span className="start-date">Start Date</span>
-          {' '}
-          <span className="end-date">End Date</span>
-          {' '}
-          <span className="delete">Delete</span>
-        </li>
-
-        {data.reservations.map((reservation) => (
-          <li key={reservation.id} className="reservations-item">
-            <span
-              onClick={() => navigate(`/houses/${reservation.house_id}`)}
-              className="reservation-name"
-            >
-              {getHouseName(reservation.house_id)}
-            </span>
-            <span className="reservation-location">{reservation.city}</span>
-            <span className="reservation-start-date">
-              {reservation.start_date}
-            </span>
-            <span className="reservation-end-date">{reservation.end_date}</span>
-            <span type="button">
-              <FaTrashAlt
-                onClick={() => deleteReservation(reservation.id)}
-                className="delete-btn"
-              />
-            </span>
-          </li>
-        ))}
-      </ul>
+      <h1>My Reservations</h1>
+      <div className="reservations-list">
+        {data.reservations.map((reservation) => {
+          const house = getHouse(reservation.house_id);
+          return (
+            <div key={reservation.id} className="reservations-item">
+              <span
+                onClick={() => navigate(`/houses/${reservation.house_id}`)}
+                className="reservation-name"
+              >
+                {house ? house.name : ''}
+              </span>
+              {house && <img className="reservation-image" src={house.image} alt={house.name} />}
+              <span className="reservation-location">{reservation.city}</span>
+              <span className="reservation-start-date">{reservation.start_date}</span>
+              <span className="reservation-end-date">{reservation.end_date}</span>
+              <button type="button" className="delete-btn" onClick={() => deleteReservation(reservation.id)}>
+                Delete
+              </button>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

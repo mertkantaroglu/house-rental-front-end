@@ -51,6 +51,7 @@ nav {
 .nav-link:hover {
   color: white;
   background-color: rgb(198, 235, 143);
+  border-radius: 8px;
 }
 
 .nav-list li :active {
@@ -72,7 +73,7 @@ nav {
   justify-content: center;
   align-items: center;
   font-weight: bold;
-  margin: 0 0 20px 10px;
+  margin: 10px 0 20px 10px;
 }
 
 .btn-logo {
@@ -81,8 +82,9 @@ nav {
 
 .signout-btn:hover {
   color: white;
-  background-color: rgb(198, 235, 143);
+  background-color: red;
   padding: 10px;
+  border-radius: 12px;
 }
 
 .left-btn,
@@ -90,6 +92,14 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.navbar-footer {
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  text-align: center;
+  display: block;
 }
 
 @media (min-width: 768px) {
@@ -133,9 +143,7 @@ nav {
   }
 
   .navbar-footer {
-    font-size: 10px;
-    justify-content: center;
-    text-align: center;
-    display: block;
+    font-size: 16px;
+    font-weight: 600;
   }
 }
