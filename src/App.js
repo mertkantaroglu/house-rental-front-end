@@ -1,4 +1,6 @@
 import { BrowserRouter, useLocation } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 import NavBar from './nav/NavBar';
 import AppRouter from './routes/Router';
@@ -10,11 +12,10 @@ const App = () => (
       <section className="main-content">
         <AppRouter />
       </section>
+      <ToastContainer />
     </BrowserRouter>
   </div>
 );
-
-export default App;
 
 function NavBarContainer() {
   const location = useLocation();
@@ -26,3 +27,5 @@ function NavBarContainer() {
     </section>
   ) : null;
 }
+
+export default App;
