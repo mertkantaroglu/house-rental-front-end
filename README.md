@@ -18,6 +18,9 @@
   - [Run tests](#run-tests)
   - [Deployment](#triangular_flag_on_post-deployment)
 - [👥 Authors](#authors)
+  - [👤 **Mert Kantaroglu**](#-mert-kantaroglu)
+  - [👤 **Kigozi Joseph**](#-kigozi-joseph)
+  - [👤 **Leslie Aine**](#-leslie-aine)
 - [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
 - [⭐️ Show your support](#support)
@@ -149,17 +152,17 @@ To run the project, execute the following command:
 
 ## 👥 Authors <a name="authors"></a>
 
-👤 **Kigozi Joseph**
-
-- GitHub: [zeph180](https://github.comzeph180)
-- Twitter: [@richards_zeph](https://twitter.com/richards_zeph)
-- LinkedIn: [Kigozi Joseph Suubi](https://linkedin.com/in/kigozi-joseph-suubi)
-
 👤 **Mert Kantaroglu**
 
 - GitHub: [@mertkantaroglu](https://github.com/mertkantaroglu/)
 - Twitter: [@aranelluinwe](https://twitter.com/aranelluinwe)
 - LinkedIn: [mertkantaroglu](https://www.linkedin.com/in/mert-kantaroglu/)
+
+👤 **Kigozi Joseph**
+
+- GitHub: [zeph180](https://github.comzeph180)
+- Twitter: [@richards_zeph](https://twitter.com/richards_zeph)
+- LinkedIn: [Kigozi Joseph Suubi](https://linkedin.com/in/kigozi-joseph-suubi)
 
 👤 **Leslie Aine**
 
