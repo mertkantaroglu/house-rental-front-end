@@ -203,9 +203,11 @@ If you like this project please give us a ⭐️.
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-We would like to thank Microverse for the project.
+I would like to thank Microverse for the education it provides.
 
 [Design guidelines](https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign) provided by [Murat Korkmaz](https://www.behance.net/muratk) on Behance.
+
+Special thanks to [LeslieAine](https://github.com/LeslieAine) and [zeph180](https://github.comzeph180) in order to work with me on this project.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
