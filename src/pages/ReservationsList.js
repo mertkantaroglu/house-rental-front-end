@@ -17,7 +17,7 @@ const ReservationsList = () => {
 
   const deleteReservation = (async (reservationId) => {
     await axios.delete(
-      `http://127.0.0.1:3000/api/v1/reservations/${reservationId}`,
+      `https://house-rental-app.onrender.com/api/v1/reservations/${reservationId}`,
     );
     dispatch(fetchReservations());
   });
