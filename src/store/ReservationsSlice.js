@@ -6,7 +6,7 @@ const DELETE_RESERVATION = 'reservations/DELETE';
 // Method AddReservation
 export const addReservation = createAsyncThunk('reservations/add', async (reservationProperties, { rejectWithValue }) => {
   try {
-    const response = await axios.post('http://localhost:3000/api/v1/reservations', reservationProperties);
+    const response = await axios.post('https://house-rental-app.onrender.com/api/v1/reservations', reservationProperties);
     return response.data;
   } catch (error) {
     return rejectWithValue(error.response.data.error);
@@ -15,7 +15,7 @@ export const addReservation = createAsyncThunk('reservations/add', async (reserv
 
 // Method DeleteReservation
 export const deleteReservation = createAsyncThunk(DELETE_RESERVATION, async (id, thunkAPI) => {
-  const API_URL = `http://localhost:3000/api/v1/reservations/${id}`;
+  const API_URL = `https://house-rental-app.onrender.com/api/v1/reservations/${id}`;
   const token = localStorage.getItem('token');
   const requestOptions = {
     method: 'DELETE',
@@ -31,7 +31,7 @@ export const deleteReservation = createAsyncThunk(DELETE_RESERVATION, async (id,
 });
 
 export const fetchReservations = createAsyncThunk('reservations/fetchReservations', async () => {
-  const response = await fetch('http://127.0.0.1:3000/api/v1/reservations');
+  const response = await fetch('https://house-rental-app.onrender.com/api/v1/reservations');
   const data = response.json();
   return data;
 });
