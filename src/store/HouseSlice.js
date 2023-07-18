@@ -5,14 +5,14 @@ const SHOW_HOUSE = 'house/SHOW/:id';
 const DELETE_HOUSE = 'house/DELETE';
 
 export const fetchHouse = createAsyncThunk('house/fetchHouse', async (id) => {
-  const url = `http://localhost:3000/api/v1/houses/${id}`;
+  const url = `https://house-rental-app.onrender.com/api/v1/houses/${id}`;
   const response = await fetch(url);
   const data = await response.json();
   return data;
 });
 
 // Base Url
-const BASE_URL = 'http://127.0.0.1:3000';
+const BASE_URL = 'https://house-rental-app.onrender.com';
 
 export const getHouse = createAsyncThunk(SHOW_HOUSE, async (id, thunkAPI) => {
   const API_URL = `${BASE_URL}/api/v1/houses/${id}`;
@@ -32,7 +32,7 @@ export const getHouse = createAsyncThunk(SHOW_HOUSE, async (id, thunkAPI) => {
 
 export const addHouse = createAsyncThunk('house/add', async (houseProperties, { rejectWithValue }) => {
   try {
-    const response = await axios.post('http://localhost:3000/api/v1/houses', houseProperties);
+    const response = await axios.post('https://house-rental-app.onrender.com/api/v1/houses', houseProperties);
     return response.data;
   } catch (error) {
     return rejectWithValue(error.response.data.error);

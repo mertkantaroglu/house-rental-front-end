@@ -5,7 +5,7 @@ export const loginUser = createAsyncThunk(
   'auth/login',
   async (credentials, { rejectWithValue }) => {
     try {
-      const response = await axios.post('http://localhost:3000/users/sign_in', credentials);
+      const response = await axios.post('https://house-rental-app.onrender.com/users/sign_in', credentials);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -17,7 +17,7 @@ export const signupUser = createAsyncThunk(
   'auth/login',
   async (credentials, { rejectWithValue }) => {
     try {
-      const response = await axios.post('http://localhost:3000/users/', credentials);
+      const response = await axios.post('https://house-rental-app.onrender.com/users/', credentials);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);

@@ -24,12 +24,12 @@ const MyHouses = () => {
     // Delete the associated reservations first
     await Promise.all(
       houseReservations.map((reservation) => axios.delete(
-        `http://127.0.0.1:3000/api/v1/reservations/${reservation.id}`,
+        `https://house-rental-app.onrender.com/api/v1/reservations/${reservation.id}`,
       )),
     );
 
     // Delete the house after reservations are deleted
-    await axios.delete(`http://127.0.0.1:3000/api/v1/houses/${houseId}`);
+    await axios.delete(`https://house-rental-app.onrender.com/api/v1/houses/${houseId}`);
     dispatch(fetchHouses());
   };
 
